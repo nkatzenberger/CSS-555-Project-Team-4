@@ -1,0 +1,51 @@
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link type="text/css" href="brainbrowser/examples/css/ui-darkness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
+    <link type="text/css" href="brainbrowser/examples/css/common.css" rel="Stylesheet" />
+    <link type="text/css" href="brainbrowser/examples/css/surface-viewer-demo.css" rel="Stylesheet" />
+
+    <!-- all the scripts -->
+    <script src="brainbrowser\examples\js/jquery-1.6.4.min.js"></script>
+    <script src="brainbrowser\examples\js/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="brainbrowser\examples\js/ui.js"></script>
+    <script src="brainbrowser\examples\js/pako.js"></script>
+    <script src="brainbrowser\src\brainbrowser/brainbrowser.js"></script>
+    <script src="brainbrowser\src\brainbrowser\core/tree-store.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/config.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/utils.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/events.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/loader.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/color-map.js"></script>
+    <script src="brainbrowser\src\brainbrowser/surface-viewer.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\lib/three.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\lib/parse-intensity-data.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/annotations.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/color.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/loading.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/rendering.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/views.js"></script>
+
+    <title>BrainBrowser Surface Viewer</title>
+  </head>
+  <body>
+    <p>hello world</p>
+    <div id="display" style="width:800px;height:800px;">
+        <div id="brainbrowser">
+        </div>
+    </div>
+    <script>
+        BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
+        BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
+            viewer.render();
+            //viewer.loadColorMapFromURL("thermal.txt")                 THESE STILL NEED TO BE FIGURED OUT
+            //viewer.loadIntensityDataFromURL("cortical-thickness.txt") ----------------------------------
+            viewer.loadModelFromURL("brain-surface.obj")
+        
+        });
+    </script>
+  </body>
+</html>
