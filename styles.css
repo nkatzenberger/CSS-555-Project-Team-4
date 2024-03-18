@@ -1,18 +1,50 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
     margin: 0;
+    background-color:#3C3C3C;
 }
 
-p{
-    padding: 50px;
-    background-color: lightblue;
+#top-bar{
+    display:block;
+    width:100%;
+    background-color: #7FBEB8;
+    text-align: center;
+    margin:0px;
+    margin-bottom:10px;
+    padding:0;
+    padding-top:10px;
+    padding-bottom:10px;
+
+}
+
+h1{
+    font-family: sans-serif;
     font-style: bold;
+    color: white;
 }
 
 li {
     text-align: center; 
+}
+
+#display{
+    display:float;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#062320;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#brainbrowser{
+    animation: fadeInAnimation ease 2s;
 }

@@ -30,10 +30,13 @@
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/rendering.js"></script>
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/views.js"></script>
 
-    <title>BrainBrowser Surface Viewer</title>
+    <title>EEG Seizure Detection</title>
   </head>
   <body>
-    <p>Brain Browser Project</p>
+    <div id ="top-bar">
+      <h1>EEG Seizure Detection</h1>
+    </div>
+
     <div id="display" style="width:800px;height:800px;">
         <div id="brainbrowser">
         </div>
@@ -61,8 +64,8 @@
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
                 viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
             });
-
-        
+            // Set the background color.
+            viewer.setClearColor(0x062320);
         });
     </script>
   </body>
