@@ -7,6 +7,12 @@ body {
     margin: 0;
 }
 
+p{
+    padding: 50px;
+    background-color: lightblue;
+    font-style: bold;
+}
+
 li {
     text-align: center; 
 }

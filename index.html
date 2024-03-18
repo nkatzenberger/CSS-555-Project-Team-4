@@ -33,18 +33,35 @@
     <title>BrainBrowser Surface Viewer</title>
   </head>
   <body>
-    <h1>EEG Seizure Detection Visualizer</h1>
+    <p>Brain Browser Project</p>
     <div id="display" style="width:800px;height:800px;">
         <div id="brainbrowser">
         </div>
     </div>
+
+    <!-- Buttons to load example color maps-->
+    <button id="load-ex1">Load Example 1</button>
+    
+    <button id="load-ex2">Load Example 2</button>
+
+
+    <!-- Brain Browser Initalization Script -->
     <script>
         BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
         BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
             viewer.render();
-            //viewer.loadColorMapFromURL("thermal.txt")                 THESE STILL NEED TO BE FIGURED OUT
-            //viewer.loadIntensityDataFromURL("cortical-thickness.txt") ----------------------------------
             viewer.loadModelFromURL("brain-surface.obj")
+            // Load Example 1 Button Event Listener
+            document.getElementById("load-ex1").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
+                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/cortical-thickness.txt")
+            });
+            // Load Example 2 Button Event Listener
+            document.getElementById("load-ex2").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
         
         });
     </script>
