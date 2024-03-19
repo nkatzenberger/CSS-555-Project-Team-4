@@ -1,4 +1,5 @@
 body {
+    font-family: sans-serif;
     margin: 0;
     background-color:#3C3C3C;
 }
@@ -9,7 +10,7 @@ body {
     background-color: #7FBEB8;
     text-align: center;
     margin:0px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding:0;
     padding-top:10px;
     padding-bottom:10px;
@@ -17,8 +18,7 @@ body {
 }
 
 h1{
-    font-family: sans-serif;
-    font-style: bold;
+    font-weight: bold;
     color: white;
 }
 
@@ -45,6 +45,67 @@ li {
     }
 }
 
-#brainbrowser{
+.loadin{
     animation: fadeInAnimation ease 2s;
+}
+
+@keyframes fadeInOut{
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0;
+    }
+    50%{
+        opacity:0
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.fade{
+    animation: fadeInOut ease 1s;
+}
+
+#left-panel{
+    display:float;
+    float:left;
+    padding:0;
+    margin:80px auto auto 0;
+    background-color:#4A948D;
+}
+
+#left-panel ul{
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+#left-panel li{
+    display:block;
+    float:left;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+#left-panel li button{
+    font-family:inherit;
+    font-size:14pt;
+    font-weight:bold;
+    padding:0;
+    border:none;
+    width:100%;
+    height:55px;
+    background-color:#ffffff;
+    transition: background 0.3s ease-in-out
+}
+
+#left-panel li button:hover{
+    background-color:#e4e4e4
+}
+
+#left-panel li button:active{
+    background-color:#c9c9c9
 }

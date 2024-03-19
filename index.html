@@ -33,20 +33,55 @@
     <title>EEG Seizure Detection</title>
   </head>
   <body>
+
+    <!-- top head/navigation bar-->
     <div id ="top-bar">
       <h1>EEG Seizure Detection</h1>
     </div>
 
-    <div id="display" style="width:800px;height:800px;">
-        <div id="brainbrowser">
-        </div>
-    </div>
 
     <!-- Buttons to load example color maps-->
-    <button id="load-ex1">Load Example 1</button>
-    
-    <button id="load-ex2">Load Example 2</button>
+    <div id="left-panel">
+      <ul>
+        <li><button id="load-ex1">Load Example 1</button></li>
+        <li><button id="load-ex2">Load Example 2</button></li>
+      </ul>
+    </div>
 
+    <!-- Brain Browser Display-->
+    <div id="display" style="width:800px;height:800px;">
+      <div class="loadin" id="display-transition">
+        <div id="brainbrowser">
+        </div>
+      </div>  
+    </div>
+
+
+    <!-- animations-->
+    <script>
+      //remove initial brain-browser-window animation
+      setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},2000);
+      //buttons make brain fade out then in while new data is loaded
+      document.getElementById("load-ex1").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+      });
+
+      document.getElementById("load-ex2").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+      });
+    </script>
 
     <!-- Brain Browser Initalization Script -->
     <script>
@@ -54,16 +89,21 @@
         BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
             viewer.render();
             viewer.loadModelFromURL("brain-surface.obj")
+
+
             // Load Example 1 Button Event Listener
             document.getElementById("load-ex1").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
-                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/cortical-thickness.txt")
+                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/cortical-thickness.txt");
             });
+
+
             // Load Example 2 Button Event Listener
             document.getElementById("load-ex2").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
                 viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
             });
+
             // Set the background color.
             viewer.setClearColor(0x062320);
         });
