@@ -42,17 +42,16 @@
 
     <!-- Buttons to load example color maps-->
     <div id="left-panel">
-      <ul>
-        <li><button id="load-ex1">Load Example 1</button></li>
-        <li><button id="load-ex2">Load Example 2</button></li>
-        <li><button id="drop">Drop Example 1</button>
-        <li id="drop-content"><ul>
-          <li><button>Button 1</button></li>
-          <li><button>Button 2</button></li>
-          <li><button>Button 3</button></li>
-        </ul></li>
-      </li>
-      </ul>
+        <button id="load-ex1">Load Example 1</button>
+        <button id="load-ex2">Load Example 2</button>
+        <div class="dropdown-menu">
+          <button class="drop">Drop Example 1...</button>
+          <div class="drop-content">
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+          </div>
+      </div>
     </div>
 
     <!-- Brain Browser Display-->
@@ -89,9 +88,20 @@
         setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
       });
 
-      //document.getElementById("drop").addEventListener("click",function() {
-        //document.getElementById("drop-content").style.display = "block !important";
-      //});
+      //dropdown menus
+      var dropdown = document.getElementsByClassName("dropdown-menu");
+      for(var i = 0;i<dropdown.length;i++){
+
+        dropdown[i].addEventListener("mouseover",function() {
+          var content = this.querySelector(".drop-content");
+          content.style.display = "block";
+        });
+
+        dropdown[i].addEventListener("mouseout",function() {
+          var content = this.querySelector(".drop-content");
+          content.style.display = "none";
+        });
+      }
     </script>
 
     <!-- Brain Browser Initalization Script -->
