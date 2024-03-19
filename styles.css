@@ -71,6 +71,7 @@ li {
 #left-panel{
     display:float;
     float:left;
+    width:20%;
     padding:0;
     margin:80px auto auto 0;
     background-color:#4A948D;
@@ -83,7 +84,7 @@ li {
 }
 
 #left-panel li{
-    display:block;
+    /*display:block;*/
     float:left;
     width:100%;
     margin:0;
@@ -108,4 +109,12 @@ li {
 
 #left-panel li button:active{
     background-color:#c9c9c9
+}
+
+#drop:hover #drop-content {
+    display: block;
+}
+
+#drop-content{
+    display: none;
 }
