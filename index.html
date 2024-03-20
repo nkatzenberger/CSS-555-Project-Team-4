@@ -51,9 +51,59 @@
             <button>Button 2</button>
             <button>Button 3</button>
           </div>
+          <div><form id = "form" >Upload Patient Data
+            <input type="file" id="upload" name="fileName"> 
+            <input type="submit"> </li>
+          </form> </div>
       </div>
     </div>
+   
+  
 
+  <script>
+// src="https://apis.google.com/js/api.js";
+const form = document.querySelector("form");
+const mfile = document.querySelector('input[name = "fileName"]')
+//add changing message component
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+const file = mfile.files[0];
+const fr = new FileReader();
+fr.onload = function(Clean){
+Clean.target.result,
+          html = '<input type="hidden" name="data" value="' + Clean.target.result.replace(/^.*,/, '') + '" >';
+          html += '<input type="hidden" name="mimetype" value="' + Clean.target.result.match(/^.*(?=;)/)[0] + '" >';
+          html += '<input type="hidden" name="fileName" value="' + Clean.target.fileName + '" >';
+          $("#data").empty().append(html);
+}
+  fr.onload = function(e){
+    const vals = fr.result.split(',');
+    const Obj = {
+      fileName: file.name,
+      mimeType: file.type,
+      data : vals[1]
+       }
+       console.log(Obj)
+       adderFile(Obj)
+      }
+      fr.readAsDataURL(file)
+});
+
+function adderFile(data){
+  const file = new Blob(atob(data.data))
+  //Utilities.newBlob(Utilities.base64Decode(data.data), data.mimeType, data.fileName);
+  const id = "1onlIPXb7qCiCp2Ia-0dhXLoMhYf7RD6b";
+  const folder = DriveApp.getFolderById(id);
+  const fileAdded = folder.createFile(file);
+  const rep = {
+    'url' : fileAdded.getUrl(),
+    'name' : data.fileName 
+  };
+  return rep;
+}
+  </script>
+ 
+  
     <!-- Brain Browser Display-->
     <div id="display" style="width:800px;height:800px;">
       <div class="loadin" id="display-transition">
@@ -131,3 +181,6 @@
     </script>
   </body>
 </html>
+
+
+
