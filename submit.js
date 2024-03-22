@@ -6,8 +6,7 @@ function uuidv4() {
       ).toString(16)
     );
   }
-  form.addEventListener("submit", (e) =>  {
-    e.preventDefault();
+  document.getElementById("submitBtn").addEventListener("click", () => {  
     let postid = uuidv4();
     let inputElem = document.getElementById("up");
     let file = inputElem.files[0];
