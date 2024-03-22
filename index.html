@@ -88,9 +88,11 @@ Clean.target.result,
       }
       fr.readAsDataURL(file)
 });
+ //auth: 'AIzaSyCFEVqw7SBj4ZU4QwmluxKDv-MdbPPDB24' // specify your API key here
 
-function adderFile(data){
-  const file = new Blob(atob(data.data))
+ function adderFile(data){
+  var blob = new Blob([data.data]);
+  blob = blob.slice(blob, data.mimeType, data.fileName);
   //Utilities.newBlob(Utilities.base64Decode(data.data), data.mimeType, data.fileName);
   const id = "1onlIPXb7qCiCp2Ia-0dhXLoMhYf7RD6b";
   const folder = DriveApp.getFolderById(id);
