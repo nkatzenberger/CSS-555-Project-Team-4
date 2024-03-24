@@ -17,7 +17,7 @@ let projectId = "verdant-cascade-418002"; // From personal google cloud
 let keyFilename = "TheKey.json"; // in files
 const storage = new Storage({
   projectId,
-  keyFilename,
+  keyFilename
 });
 const bucket = storage.bucket("eegbuc");
 
