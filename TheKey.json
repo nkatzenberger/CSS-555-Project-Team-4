@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "verdant-cascade-418002",
+  "private_key_id": "57cd032722c689c8222ef3d587ea31db6ef8a997",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwDMDm2JHPq1z6\nYV8cEUiJ7pAHArstIxyLwsLmKRshw0mBxKl97W7erN2YOCFB+zb1Nu9stKMiTfdT\nzze0WSukJ8mubg19nNMBmCLFWRii7NjegYQtIeb78RPB3cSN+419JBiH2zQzt43A\ncD0tDQ9DOWqegD1yK/igCYJPuoUkfgizjQL6qJGzCrJOkbj6V+wvnIoffkGijlXv\nE49SLCapoALVz7i7IDzATQB47+/7sio7LhtjLNjnyA52ycMj5aez+eKPV23LLae6\nVxVm/gDSR+UmJnns8v0sWjvC0K+gy9L3QMbcGnuvfPYNdIWMDolhfveEDK37++LD\nzimcHN6pAgMBAAECggEACqxl8EOmaMt1kk3fpk6l8eGKJI1V1na6fv61MknBC1r7\nqefHyYq2SL8nmthMVo5p1pQYuqPOVYDEmKAyOwzs8xbhHgzYud+NgMXogG6BFTT8\nMQFJMjNL/cUFSEuvDwH2og+o175tJnWKcpBbenpq4nh+A6i4EPlO1DpqBsttfGN4\nqO5SRCf77AM0g2b6AMOlkIQPnK1H3HBXZH9QBMUDX8RzdyCu5DI43baMaCy+/j6A\nO10NQcEwsTS4HwryIvp7ow267SWsjyytMAyplHw/HMw225Dw0ypetTVWQ5tivYJF\nwAt8pMjqeQOfcwsebeyNMEt6BStwScpAAWt/eeeowQKBgQDekJzQS/55OO2piPyL\nBpbOXdsTfVv8k+js4JCbhKOilfMZSSvlvRRxSVHIWpuIaQcEZjH+1BGoKhEJRUfL\ndtBqXtbtzGBaFdSNYMnoWDTyrQBuQprnOtnftq/NLQucm9Cc/18wKuVOvCcUwQbX\n+DIVxL0prn2k8Hoo1Y2fjnsh6wKBgQDKf0RaChhk2QKKlGQ1W1Yva2w8g2hrmqjx\ngeGAbP6KpC5AFXqLjDwXaO4yW++awIgyQQ7MkkyDvmWq6+Xi2UjfVphDGCUvOsQ0\nVSMQHo9wLtusrh/oVlEBT0NK9Yjf7wKPgUBMc681wqndxsPVMvBaYyg6CMAqYhu5\n3bRIaqNIuwKBgQCqnbGY/KjXxQxsKtduvF5fVRPcnP0nYzvsWzp//e5zdQAnIjDE\nrW4+ajaHoO4aZGk8thsdfvUKNTVaJgIjt7GN2aZqJYK3jISk3M3rj7MHVhg+blDR\ncgwTs7iRUTbVl50Uva/6/OdMtHBBOLhGV74NcgSRL3KiPrdnFk67Qj6igQKBgCqr\nmsmmavGFUSXGkz8zGfwwFMTDpBNYqdUKW2xmi1THt/9FB2e0i00bjWYLPXhMreZ5\nExdElN8GFgJoZy7gPpzhcIBi7CMBrSqh7huNdQhct2mx34Nj/PnbrAB1sPwPL2jy\nAYyarAcWGBllswqQC1ngny9rfKLxvYnzD/RalEHVAoGAHJFfloMviq2AC4Y/DLPb\nN6udAbNK85JOx8HstS78CsDezzoyxviz+bGg78bGfjmwp5l7VofdEysDRtXcFuvT\nojFDxRJCrg6PB7T4agMGDqbPxk0blL2c0dzOUaXVqtdi27gTYQCdYotxb4zyspF0\nfzi/DoYghGyY/CSnfK82iLo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "eegdata@verdant-cascade-418002.iam.gserviceaccount.com",
+  "client_id": "112951785792396131999",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eegdata%40verdant-cascade-418002.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

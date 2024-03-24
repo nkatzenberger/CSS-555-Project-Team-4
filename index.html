@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <html lang="en">
@@ -190,3 +191,192 @@
 
 
 
+=======
+
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" type="text/css" href="./styles.css"> 
+    <link type="text/css" href="brainbrowser/examples/css/ui-darkness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
+    <link type="text/css" href="brainbrowser/examples/css/common.css" rel="Stylesheet" />
+    <link type="text/css" href="brainbrowser/examples/css/surface-viewer-demo.css" rel="Stylesheet" />
+
+    <!-- all the scripts -->
+    <script src="brainbrowser\examples\js/jquery-1.6.4.min.js"></script>
+    <script src="brainbrowser\examples\js/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="brainbrowser\examples\js/ui.js"></script>
+    <script src="brainbrowser\examples\js/pako.js"></script>
+    <script src="brainbrowser\src\brainbrowser/brainbrowser.js"></script>
+    <script src="brainbrowser\src\brainbrowser\core/tree-store.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/config.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/utils.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/events.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/loader.js"></script>
+    <script src="brainbrowser\src\brainbrowser\lib/color-map.js"></script>
+    <script src="brainbrowser\src\brainbrowser/surface-viewer.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\lib/three.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\lib/parse-intensity-data.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/annotations.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/color.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/loading.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/rendering.js"></script>
+    <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/views.js"></script>
+
+    <title>EEG Seizure Detection</title>
+  </head>
+  <body>
+
+    <!-- top head/navigation bar-->
+    <div id ="top-bar">
+      <h1>EEG Seizure Detection</h1>
+    </div>
+
+
+    <!-- Buttons to load example color maps-->
+    <div id="left-panel">
+        <button id="load-ex1">Load Example 1</button>
+        <button id="load-ex2">Load Example 2</button>
+        <div class="dropdown-menu">
+          <button class="drop">Drop Example 1...</button>
+          <div class="drop-content">
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+          </div>
+          </div>
+          <div>Upload Patient Data
+            <input type="file" id="up" name="up"> 
+            <button id="submitBtn" >Submit</button>
+            </div>
+    </div>
+
+  <script>
+    src = "/submit.js";
+// src="https://apis.google.com/js/api.js"; 
+/*
+const form = document.querySelector("form");
+const mfile = document.querySelector('input[name = "fileName"]')
+//add changing message component
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+const file = mfile.files[0];
+const fr = new FileReader();
+fr.onload = function(Clean){
+Clean.target.result,
+          html = '<input type="hidden" name="data" value="' + Clean.target.result.replace(/^.*,/, '') + '" >';
+          html += '<input type="hidden" name="mimetype" value="' + Clean.target.result.match(/^.*(?=;)/)[0] + '" >';
+          html += '<input type="hidden" name="fileName" value="' + Clean.target.fileName + '" >';
+          $("#data").empty().append(html);
+}
+  fr.onload = function(e){
+    const vals = fr.result.split(',');
+    const Obj = {
+      fileName: file.name,
+      mimeType: file.type,
+      data : vals[1]
+       }
+       console.log(Obj)
+       adderFile(Obj)
+      }
+      fr.readAsDataURL(file)
+});
+ //auth: 'AIzaSyCFEVqw7SBj4ZU4QwmluxKDv-MdbPPDB24' // specify your API key here
+
+ function adderFile(data){
+  var blob = new Blob([data.data]);
+  blob = blob.slice(blob, data.mimeType, data.fileName);
+  //Utilities.newBlob(Utilities.base64Decode(data.data), data.mimeType, data.fileName);
+  const id = "1onlIPXb7qCiCp2Ia-0dhXLoMhYf7RD6b";
+  const folder = DriveApp.getFolderById(id);
+  const fileAdded = folder.createFile(file);
+  const rep = {
+    'url' : fileAdded.getUrl(),
+    'name' : data.fileName 
+  };
+  return rep;
+} */
+  </script>
+ 
+  
+    <!-- Brain Browser Display-->
+    <div id="display" style="width:800px;height:800px;">
+      <div class="loadin" id="display-transition">
+        <div id="brainbrowser">
+        </div>
+      </div>  
+    </div>
+
+
+    <!-- animations-->
+    <script>
+      //remove initial brain-browser-window animation
+      setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},2000);
+      //buttons make brain fade out then in while new data is loaded
+      document.getElementById("load-ex1").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+      });
+
+      document.getElementById("load-ex2").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+      });
+
+      //dropdown menus
+      var dropdown = document.getElementsByClassName("dropdown-menu");
+      for(var i = 0;i<dropdown.length;i++){
+
+        dropdown[i].addEventListener("mouseover",function() {
+          var content = this.querySelector(".drop-content");
+          content.style.display = "block";
+        });
+
+        dropdown[i].addEventListener("mouseout",function() {
+          var content = this.querySelector(".drop-content");
+          content.style.display = "none";
+        });
+      }
+    </script>
+
+    <!-- Brain Browser Initalization Script -->
+    <script>
+        BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
+        BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
+            viewer.render();
+            viewer.loadModelFromURL("brain-surface.obj")
+
+
+            // Load Example 1 Button Event Listener
+            document.getElementById("load-ex1").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
+                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/cortical-thickness.txt");
+            });
+
+
+            // Load Example 2 Button Event Listener
+            document.getElementById("load-ex2").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
+            // Set the background color.
+            viewer.setClearColor(0x062320);
+        });
+    </script>
+  </body>
+</html>
+
+
+
+>>>>>>> bd7dcf3cbd4db3d606aaa080a1fa5073892ae146
