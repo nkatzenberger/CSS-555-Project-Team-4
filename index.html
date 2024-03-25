@@ -50,57 +50,22 @@
             <button id="drop-ex3">Gray Scale</button>
           </div>
           </div>
-          <div>Upload Patient Data
+          <div>
+            <h3>Upload Patient Data</h3>
+
             <input type="file" id="up"> 
             <button id="submitBtn" >Submit</button>
-            </div>
-    </div>
 
+          </div>
+          <div id="response"></div>
+    </div>
+  <script src="upload.js"></script>
   <script>
     
-// src="https://apis.google.com/js/api.js"; 
-/*
-const form = document.querySelector("form");
-const mfile = document.querySelector('input[name = "fileName"]')
-//add changing message component
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-const file = mfile.files[0];
-const fr = new FileReader();
-fr.onload = function(Clean){
-Clean.target.result,
-          html = '<input type="hidden" name="data" value="' + Clean.target.result.replace(/^.*,/, '') + '" >';
-          html += '<input type="hidden" name="mimetype" value="' + Clean.target.result.match(/^.*(?=;)/)[0] + '" >';
-          html += '<input type="hidden" name="fileName" value="' + Clean.target.fileName + '" >';
-          $("#data").empty().append(html);
-}
-  fr.onload = function(e){
-    const vals = fr.result.split(',');
-    const Obj = {
-      fileName: file.name,
-      mimeType: file.type,
-      data : vals[1]
-       }
-       console.log(Obj)
-       adderFile(Obj)
-      }
-      fr.readAsDataURL(file)
-});
- //auth: 'AIzaSyCFEVqw7SBj4ZU4QwmluxKDv-MdbPPDB24' // specify your API key here
-
- function adderFile(data){
-  var blob = new Blob([data.data]);
-  blob = blob.slice(blob, data.mimeType, data.fileName);
-  //Utilities.newBlob(Utilities.base64Decode(data.data), data.mimeType, data.fileName);
-  const id = "1onlIPXb7qCiCp2Ia-0dhXLoMhYf7RD6b";
-  const folder = DriveApp.getFolderById(id);
-  const fileAdded = folder.createFile(file);
-  const rep = {
-    'url' : fileAdded.getUrl(),
-    'name' : data.fileName 
-  };
-  return rep;
-} */
+    document.getElementById("submitBtn").addEventListener("click", function() {
+      uploadFile();
+    });
+    
   </script>
  
   
@@ -224,8 +189,8 @@ Clean.target.result,
             viewer.setClearColor(0x062320);
         });
     </script>
-        <script type="module" src ="index.js"></script>
-        <script src = "submit.js"></script>
+      <!--  <script type="module" src ="index.js"></script>
+        <script src = "submit.js"></script>-->
   </body>
 </html>
 
