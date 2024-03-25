@@ -13,15 +13,15 @@ function uuidv4() {
     // Create new file so we can rename the file
     let blob = file.slice(0, file.size);
     newFile = new File([blob], postid); //renames file
-    console.log("New File Blob");
-    /*let formData = new FormData();
+
+    let formData = new FormData();
     formData.append("up", newFile);
-    fetch("/upload", {
+    fetch("/upload", { //"https://httpbin.org/post"
         method: "POST",
         body: formData,
       })
-      .then((res) => res.text())
+      .then((res) => res.text());
+      //   .then(loadPosts());
       console.log("res.text");
-   //   .then(loadPosts());
-   */
+   
   });
