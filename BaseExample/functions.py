@@ -128,7 +128,7 @@ class ConvDipSingleCatAtt(torch.nn.Module):
 # In[6]:
 
 
-def ConvDip_ESI(task_id, result_path):
+def ConvDip_ESI(task_id, result_path, file):
     """
     EEG source imaging with ConvDip framework
     task_id: str or list ['LA', 'RA', 'LV', 'RV']
@@ -139,7 +139,6 @@ def ConvDip_ESI(task_id, result_path):
     
     model_flag = 'real_model'
     model_dir = './model/' + data_name + '/' + model_flag
-    
     test_data_dir = './data/real_data/'
     # result_dir = './result/' + data_name + '/' + model_flag
     result_dir = result_path + '/' + data_name
@@ -165,10 +164,15 @@ def ConvDip_ESI(task_id, result_path):
             raise Exception("Oops! That was not a valid task id. Try use 'LA', 'RA', 'LV' or 'RV'!")
         else:
             data_mat = test_data_dir + '/evoked_' + 'eeg' + '_' + str(run) + '.mat'
+            
             result_mat = result_dir + '/Test_result_' + 'evoked_' + str(run) + '.mat'
         
             # load the real dataset
-            dataset = scipy.io.loadmat(data_mat)
+            dataset = None
+            if file == None:
+                dataset = scipy.io.loadmat(data_mat)
+            else:
+                dataset = scipy.io.loadmat(file.filename)
             test_input = dataset['eeg'].T
             
             # print("data normalization:")

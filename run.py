@@ -7,12 +7,12 @@ import pandas as pd
 # if __name__ == "__main__":
 #     exec(open("data_preprocessing.py").read())
 #     exec(open("main.py").read())
-    
-mat = scipy.io.loadmat("./BaseExample/result/sample/Test_result_evoked_LA.mat")
-mat_variable = mat['s_pred']
-df = pd.DataFrame(mat_variable)
-single_col_df = df.stack().to_frame()
-single_col_df = df.to_string(index=False, header=False)
-file = open("converted.txt", "w")
-file.write(str(single_col_df))
-file.close
+def convertToBB(filename):
+    mat = scipy.io.loadmat("./BaseExample/"+filename[19:])
+    mat_variable = mat['s_pred']
+    df = pd.DataFrame(mat_variable)
+    single_col_df = df.stack().to_frame()
+    single_col_df = df.to_string(index=False, header=False)
+    file = open("converted.txt", "w")
+    file.write(str(single_col_df))
+    file.close

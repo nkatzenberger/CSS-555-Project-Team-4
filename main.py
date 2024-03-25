@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
 import os
+from BaseExample import model
+from run import convertToBB
 #from BaseExample import model
 
 # Get the absolute path to the project root directory
@@ -23,6 +25,8 @@ def upload():
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
     file.save(file.filename)
+    model.runModel(file)
+    convertToBB("Test_result_evoked_" + file.filename[19:])
     return 'File uploaded successfully'
 
 if __name__ == '__main__':
