@@ -6,21 +6,22 @@ function uuidv4() {
       ).toString(16)
     );
   }
-  document.getElementById("submitBtn").addEventListener("click", () => {  
+  document.getElementById("submitBtn").addEventListener("click", function() { 
     let postid = uuidv4();
     let inputElem = document.getElementById("up");
     let file = inputElem.files[0];
     // Create new file so we can rename the file
     let blob = file.slice(0, file.size);
     newFile = new File([blob], postid); //renames file
-
-    let formData = new FormData();
+    console.log("New File Blob");
+    /*let formData = new FormData();
     formData.append("up", newFile);
     fetch("/upload", {
         method: "POST",
         body: formData,
       })
       .then((res) => res.text())
-      .then(loadPosts());
+      console.log("res.text");
+   //   .then(loadPosts());
+   */
   });
-  

@@ -1,4 +1,6 @@
+export default function run(){
 const express = require("express");
+console.log("This part ran");
 const app = express();
 const path = require("path");
 const { Storage } = require("@google-cloud/storage");
@@ -51,6 +53,7 @@ app.post("/upload", multer.single("up"), (req, res) => {
 }
 });
 
-app.get("/", (req, res) => {
+app.get("/upload", (req, res) => {
     res.sendFile(src + "/index.html");
   });
+}
