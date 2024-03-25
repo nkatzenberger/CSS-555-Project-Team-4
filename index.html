@@ -43,11 +43,13 @@
         <button id="load-ex1" class="hover-effect">Load Example 1</button>
         <button id="load-ex2" class="hover-effect">Load Example 2</button>
         <div class="dropdown-menu">
-          <button class="drop hover-effect">Drop Example 1...</button>
+          <button class="drop hover-effect">Display Selection...</button>
           <div class="drop-content">
             <button id="drop-ex1" class="hover-effect">Blue</button>
             <button id="drop-ex2" class="hover-effect">Green</button>
             <button id="drop-ex3" class="hover-effect">Gray Scale</button>
+            <button id="drop-ex4" class="hover-effect">Spectral</button>
+            <button id="drop-ex5" class="hover-effect">Thermal</button>
           </div>
           </div>
           <div>
@@ -131,6 +133,26 @@
         setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
         });
 
+      document.getElementById("drop-ex4").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+        });
+
+      document.getElementById("drop-ex5").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+        });
+
       //dropdown menus
       var dropdown = document.getElementsByClassName("dropdown-menu");
       for(var i = 0;i<dropdown.length;i++){
@@ -170,17 +192,22 @@
 
             document.getElementById("drop-ex1").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/blue.txt");
-                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
             });
 
             document.getElementById("drop-ex2").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/green.txt");
-                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
             });
 
             document.getElementById("drop-ex3").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/gray-scale.txt");
-                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
+            document.getElementById("drop-ex4").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+            });
+
+            document.getElementById("drop-ex5").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
             });
 
             // Set the background color.
