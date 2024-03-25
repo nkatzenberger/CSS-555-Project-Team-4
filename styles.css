@@ -115,3 +115,9 @@ input{
     border:none;
     font-weight:bold;
 }
+
+.hover-effect:hover {
+    background-color: #4CAF50; /* Change background color on hover */
+    color: rgb(255, 255, 255); /* Change text color on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}

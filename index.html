@@ -40,19 +40,21 @@
 
     <!-- Buttons to load example color maps-->
     <div id="left-panel">
-        <button id="load-ex1">Load Example 1</button>
-        <button id="load-ex2">Load Example 2</button>
+        <button id="load-ex1" class="hover-effect">Load Example 1</button>
+        <button id="load-ex2" class="hover-effect">Load Example 2</button>
         <div class="dropdown-menu">
-          <button class="drop">Drop Example 1...</button>
+          <button class="drop hover-effect">Drop Example 1...</button>
           <div class="drop-content">
-            <button>Button 1</button>
-            <button>Button 2</button>
-            <button>Button 3</button>
+            <button id="drop-ex1" class="hover-effect">Blue</button>
+            <button id="drop-ex2" class="hover-effect">Green</button>
+            <button id="drop-ex3" class="hover-effect">Gray Scale</button>
           </div>
           </div>
-          <div>Upload Patient Data
-            <input type="file" id="up"> 
-            <button id="submitBtn" >Submit</button>
+          <div>
+            <h3>Upload Patient Data</h3>
+            <input type="file" id="up" class="hover-effect"> 
+            <button id="submitBtn" class="hover-effect">Submit</button>
+
           </div>
           <div id="response"></div>
     </div>
@@ -99,6 +101,36 @@
         setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
       });
 
+      document.getElementById("drop-ex1").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+        });
+
+      document.getElementById("drop-ex2").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+        });
+
+      document.getElementById("drop-ex3").addEventListener("click", function() {
+
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade")
+
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+        });
+
       //dropdown menus
       var dropdown = document.getElementsByClassName("dropdown-menu");
       for(var i = 0;i<dropdown.length;i++){
@@ -134,6 +166,21 @@
             document.getElementById("load-ex2").addEventListener("click", function() {
                 viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
                 viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
+            document.getElementById("drop-ex1").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/blue.txt");
+                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
+            document.getElementById("drop-ex2").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/green.txt");
+                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+            });
+
+            document.getElementById("drop-ex3").addEventListener("click", function() {
+                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/gray-scale.txt");
+                //viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
             });
 
             // Set the background color.
