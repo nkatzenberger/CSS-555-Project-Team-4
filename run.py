@@ -1,3 +1,4 @@
+"""Module for converting data to BrainBrowser format."""
 # Run this in order to generate the brain images using data
 
 # from BaseExample import data_preprocessing, main
