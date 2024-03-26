@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, make_response
 from flask_cors import CORS
 import os
 from BaseExample import model
@@ -25,9 +25,12 @@ def upload():
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
     file.save(file.filename)
+    #file = ""
     model.runModel(file)
     convertToBB("Test_result_evoked_" + file.filename[19:])
-    return 'File uploaded successfully'
+    response = make_response('File uploaded successfully')
+    response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

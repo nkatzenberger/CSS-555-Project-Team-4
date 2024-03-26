@@ -2,7 +2,7 @@
 # coding: utf-8
 import sys
 sys.path.append("..")
-from BaseExample import functions
+from BaseExample import processes
 from BaseExample import brain
 #from brain import load_result
 #from brain import brain3d
@@ -12,7 +12,7 @@ from BaseExample import brain
 
 # In[1]:
 def runModel(file=None, tasks = ['RV', 'RA'], task = 'RV'):
-    exec(open("functions.py").read())
+    #exec(open("./processes.py").read())
     # In[2]:
     """
     The subject underwent four tasks, and corresponding EEG data were collected.
@@ -22,7 +22,7 @@ def runModel(file=None, tasks = ['RV', 'RA'], task = 'RV'):
     # set your result path
     # or 'LA' or ['LA'], etc.
     result_path = './result/'
-    functions.ConvDip_ESI(tasks, result_path, file)
+    processes.ConvDip_ESI(tasks, result_path, file)
     # In[3]:
     # choose only ONE task from ['LA','LV','RA','RV']
     #task = 'LA' 

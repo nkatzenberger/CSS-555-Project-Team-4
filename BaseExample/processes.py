@@ -128,7 +128,7 @@ class ConvDipSingleCatAtt(torch.nn.Module):
 # In[6]:
 
 
-def ConvDip_ESI(task_id, result_path, file):
+def ConvDip_ESI(task_id, result_path, file=None):
     """
     EEG source imaging with ConvDip framework
     task_id: str or list ['LA', 'RA', 'LV', 'RV']
