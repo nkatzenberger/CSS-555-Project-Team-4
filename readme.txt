@@ -1,8 +1,8 @@
 Run this command in terminal to get BrainBrowser files on local machine: git clone https://github.com/aces/brainbrowser.git
-
+//Outdated
 This project uses https://www.npmjs.com/package/nano-server for development,
 make sure it is installed. "npm install -g nano-server"
-
+///
 NOW uses flask; Install flask and flask_cors, then run python main.py
 
 run this to start localhost: nano-server 5000

@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-import functions
-import brain
-from functions import ConvDip_ESI
-from brain import load_result
-from brain import brain3d
-
+import sys
+sys.path.append("..")
+from BaseExample import functions
+from BaseExample import brain
+#from brain import load_result
+#from brain import brain3d
 
 
 # # 1. Brain Source Localization with ConvDip
@@ -23,11 +22,11 @@ def runModel(file=None, tasks = ['RV', 'RA'], task = 'RV'):
     # set your result path
     # or 'LA' or ['LA'], etc.
     result_path = './result/'
-    ConvDip_ESI(tasks, result_path, file = None)
+    functions.ConvDip_ESI(tasks, result_path, file)
     # In[3]:
     # choose only ONE task from ['LA','LV','RA','RV']
     #task = 'LA' 
-    s_pred = load_result(task, result_path)
+    s_pred = brain.load_result(task, result_path)
     print(s_pred.shape) # s_pred: estimated sources at different timepoints
 
     # # 2. 3D Visualization
@@ -46,7 +45,7 @@ def runModel(file=None, tasks = ['RV', 'RA'], task = 'RV'):
     In the case of ‘split’ hemispheres are displayed side-by-side in different viewing panes.
     """
     hemi='split' # choose from ['lh', 'rh', 'split', 'both']
-    brain3d(s_pred, hemi)
+    brain.brain3d(s_pred, hemi)
 
 
 # In[ ]:
