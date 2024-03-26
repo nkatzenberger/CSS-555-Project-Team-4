@@ -117,7 +117,46 @@ input{
 }
 
 .hover-effect:hover {
-    background-color: #4CAF50; /* Change background color on hover */
-    color: rgb(255, 255, 255); /* Change text color on hover */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+/*Loading Status Styles */
+#uploadStatus {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+.upload-success {
+    background-color: #4CAF50;
+}
+  
+
+.upload-error {
+    background-color: #f44336;
+}
+
+/*Loading Circle Styles */
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4A948D;
+    border-radius: 50%;
+
+    width: 20px;
+    height: 20px;
+    animation: spin 3s linear infinite;
+}
+
+#loading {
+    margin-left: 10px;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

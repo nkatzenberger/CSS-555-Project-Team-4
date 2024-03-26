@@ -1,20 +1,41 @@
 function uploadFile() {
-    console.log("uploadFile start");
-    var fileInput = document.getElementById('up');
-    var file = fileInput.files[0];
-    var formData = new FormData();
+    let inputElem = document.getElementById('up');
+    let file = inputElem.files[0];
+
+    if (!file) {
+        document.getElementById('uploadStatus').innerText = 'No file selected.';
+        return;
+    }
+
+    // Show loading spinner
+    document.getElementById('loading').style.display = 'block';
+
+    let formData = new FormData();
     formData.append('file', file);
 
     fetch('http://localhost:8000/upload', {
         method: 'POST',
         body: formData
     })
-    .then(response => response.text())
+    .then(response => {
+        return response.text();
+    })
     .then(data => {
         document.getElementById('response').innerHTML = data;
+        document.getElementById('uploadStatus').innerText = 'Upload successful';
     })
     .catch(error => {
         console.error('Error:', error);
+        document.getElementById('uploadStatus').innerText = 'Upload failed';
+    })
+    .finally(() => {
+        // Hide loading spinner
+        document.getElementById('loading').style.display = 'none';
     });
-    console.log("uploadFile end");
-  }
+}
+
+function uuidv4() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+    );
+}
