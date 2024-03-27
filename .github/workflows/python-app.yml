@@ -30,6 +30,9 @@ jobs:
         pip install pandas
         pip install flask
         pip install flask_cors
+        pip install scipy
+        pip install numpy
+        pip install h5py
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
