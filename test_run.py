@@ -14,13 +14,6 @@ class TestConvertToBB(unittest.TestCase):
         # Assert that the output file exists
         self.assertTrue(os.path.exists("converted.txt"))
         
-        # Assert that the content of the output file is as expected
-        with open("converted.txt", "r") as file:
-            content = file.read()
-            # Add assertions for the expected content here
-            # For example:
-            # self.assertIn("expected_string_in_file", content)
-        
         # Clean up: delete the output file
         os.remove("converted.txt")
 
