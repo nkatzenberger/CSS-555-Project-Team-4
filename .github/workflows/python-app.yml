@@ -33,6 +33,19 @@ jobs:
         pip install scipy
         pip install numpy
         pip install h5py
+        pip install scikit-learn
+        import torch
+        import torch.nn as nn
+        import torchvision
+        import torchvision.transforms as transforms
+        from torch.autograd import Variable
+        import torch.nn.init
+        from torch.utils.data import Dataset, DataLoader
+        import mne
+        from mne.datasets import sample
+        import argparse
+        from argparse import ArgumentParser
+        from matplotlib import pylab as plt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
