@@ -9,7 +9,7 @@ import pandas as pd
 #     exec(open("data_preprocessing.py").read())
 #     exec(open("main.py").read())
 def convertToBB(filename):
-    mat = scipy.io.loadmat("./result/sample/Test_result_evoked_"+filename[19:])
+    mat = scipy.io.loadmat("./result/sample/"+filename)
     mat_variable = mat['s_pred']
     df = pd.DataFrame(mat_variable)
     single_col_df = df.stack().to_frame()
