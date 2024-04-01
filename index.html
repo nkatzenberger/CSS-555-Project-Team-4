@@ -40,10 +40,10 @@
 
     <!-- Buttons to load example color maps-->
     <div id="left-panel">
-        <button id="load-ex1" class="hover-effect">Load Example 1</button>
+        <button id="load-ex1" class="hover-effect">Load Computed</button>
         <button id="load-ex2" class="hover-effect">Load Example 2</button>
         <div class="dropdown-menu">
-          <button class="drop hover-effect">Display Selection...</button>
+          <button class="drop hover-effect">Display Selection &#709;</button>
           <div class="drop-content">
             <button id="drop-ex1" class="hover-effect">Blue</button>
             <button id="drop-ex2" class="hover-effect">Green</button>
@@ -85,91 +85,48 @@
 
   <!-- animations-->
   <script>
+
+    function fadeAnimation(elementID){
+      document.getElementById(elementID).addEventListener("click", function() {
+
+      //fade animation
+      var fadeTarget = document.getElementById("display-transition")
+      fadeTarget.classList.add("fade");
+
+      // Wait until the animation is over and then remove the class
+      setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
+      });
+
+    }
       //remove initial brain-browser-window animation
       setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},2000);
+
       //buttons make brain fade out then in while new data is loaded
-      document.getElementById("load-ex1").addEventListener("click", function() {
+      fadeAnimation("load-ex1");
+      fadeAnimation("load-ex2");
 
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
+      fadeAnimation("drop-ex1");
+      fadeAnimation("drop-ex2");
+      fadeAnimation("drop-ex3");
+      fadeAnimation("drop-ex4");
+      fadeAnimation("drop-ex5");
 
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-      });
-
-      document.getElementById("load-ex2").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-      });
-
-      document.getElementById("drop-ex1").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-        });
-
-      document.getElementById("drop-ex2").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-        });
-
-      document.getElementById("drop-ex3").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-        });
-
-      document.getElementById("drop-ex4").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-        });
-
-      document.getElementById("drop-ex5").addEventListener("click", function() {
-
-        //fade animation
-        var fadeTarget = document.getElementById("display-transition")
-        fadeTarget.classList.add("fade")
-
-        // Wait until the animation is over and then remove the class
-        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-        });
-
-      //dropdown menus
+      //dropdown menus set visibility
       var dropdown = document.getElementsByClassName("dropdown-menu");
       for(var i = 0;i<dropdown.length;i++){
 
         dropdown[i].addEventListener("mouseover",function() {
           var content = this.querySelector(".drop-content");
           content.style.display = "block";
+          content.style.animation = "dropdown-slide 1s";
+          content.style.maxHeight = content.scrollHeight + "px";
         });
 
         dropdown[i].addEventListener("mouseout",function() {
           var content = this.querySelector(".drop-content");
           content.style.display = "none";
+          content.style.animation = "dropdown-slide 1s reverse";
+          content.style.maxHeight = "0";
         });
       }
     </script>
