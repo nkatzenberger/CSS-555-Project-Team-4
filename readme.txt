@@ -11,5 +11,3 @@ access on machine in address bar of browser "http://localhost:5000/"
 
 This project uses MNE-Python Environment in order to store and process data.
 Install the environment https://mne.tools/stable/install/index.html
-
-When using the Interactive Python Notebook files, use the MNE environment as the kernel.
