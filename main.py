@@ -25,9 +25,14 @@ def upload():
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
     file.save(file.filename)
-    #file = ""
-    model.runModel(file)
-    convertToBB("Test_result_evoked_" + file.filename[19:])
+    task = file.filename[11:12]
+    if(task== 'L'):
+        model.runModel(file, ['LA', 'LV'], file.filename[11:13])
+    elif(task== 'R'):
+        model.runModel(file, ['RA', 'RV'], file.filename[11:13])
+    else:
+        model.runModel(file)
+    convertToBB("Test_result_evoked_" + file.filename[11:])
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
     return response

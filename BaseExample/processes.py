@@ -135,11 +135,11 @@ def ConvDip_ESI(task_id, result_path, file=None):
     result_path: path to model output
     """
     data_name = 'sample'
-    map_dir = './data/eeg_maptable.mat'
+    map_dir = './BaseExample/data/eeg_maptable.mat'
     
     model_flag = 'real_model'
-    model_dir = './model/' + data_name + '/' + model_flag
-    test_data_dir = './data/real_data/'
+    model_dir = './BaseExample/model/' + data_name + '/' + model_flag
+    test_data_dir = './BaseExample/data/real_data/'
     # result_dir = './result/' + data_name + '/' + model_flag
     result_dir = result_path + '/' + data_name
     if not os.path.exists(result_dir):

@@ -61,7 +61,7 @@ def get_stc():
     del epochs
 
     # Read forward model
-    fwd_fname = './data/meg-fwd.fif'
+    fwd_fname = './BaseExample/data/meg-fwd.fif'
     forward = mne.read_forward_solution(fwd_fname)
 
     filters = make_lcmv(evoked.info, forward, data_cov, reg=0.05,

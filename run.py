@@ -6,7 +6,7 @@ import pandas as pd
 
 def convertToBB(filename):
     # Construct the full file path
-    file_path = "./BaseExample/result/sample/"+filename
+    file_path = "./result/sample/"+filename
     
     # Load data from the file
     matlab_file = scipy.io.loadmat(file_path)
