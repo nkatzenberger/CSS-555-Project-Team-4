@@ -111,11 +111,22 @@ li {
     background-color:#4A948D;
 }
 
+
+#current-user{
+    display: inline;
+    color:red;
+}
+
 #login-btn{
-    background-color:white;
-    display:block;
-    float:right;
-    width:45%;
+    font-family:inherit;
+    font-size:12pt;
+    font-weight:bold;
+    padding:0;
+    border:none;
+    width:100%;
+    height:25px;
+    background-color:#ffffff;
+    transition: background 0.3s ease-in-out
 }
 
 #right-input-fields{
@@ -124,12 +135,18 @@ li {
     margin:auto;
 }
 
+#current-login{
+    background-color:white;
+    font-size: 12pt;
+    font-weight:bold;
+}
+
 #right-panel input{
     background-color:#062320;
     color:white;
     display:inline-block;
     margin:auto;
-    width:45%;
+    width:100%;
 }
 
 .drop-content{

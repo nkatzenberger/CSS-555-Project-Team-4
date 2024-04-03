@@ -79,14 +79,15 @@
   <div id="right-panel">
     <div id="login">
       <div id="current-login">
-        You are currently logged in as:
+        <!-- Use js to change current-user, when you do, change text color to green-->
+        Current Login: <div id="current-user">Nobody</div>
       </div>
       <div id="right-input-fields">
         <input type="text" id="username" name="username" placeholder="Username">
         <input type="password" id="password" name="password" placeholder="Password">
       </div>
-      <div id="login-btn">
-        Log In
+      <div>
+        <button id="login-btn">Log In</button>
       </div>
     </div>
     <div id="filelist">
