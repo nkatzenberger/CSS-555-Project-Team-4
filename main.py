@@ -4,7 +4,7 @@ import os
 from BaseExample import model
 import scipy.io
 import pandas as pd
-
+from submit import uploadToFirebase
 # Convert ConvDip data into brainbrowser format
 def convertToBB(filename):
     # Construct the full file path
@@ -53,7 +53,8 @@ def upload():
         model.runModel(file, ['RA', 'RV'], file.filename[11:13])
     else:
         model.runModel(file)
-    convertToBB("Test_result_evoked_" + file.filename[11:])
+    convertToBB("output.mat")
+    uploadToFirebase(file.filename)
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
     return response
