@@ -9,6 +9,6 @@ def uploadToFirebase(f):
   blob = bucket.blob(fileName)
   blob.upload_from_filename(fileName) 
   blob.make_public()
-  print("your file at the url", blob.public_url, "was uploaded successfully")
+  #print("your file at the url", blob.public_url, "was uploaded successfully")
   return (blob)
 #Removed Smells: Too many comments and bad variable names
