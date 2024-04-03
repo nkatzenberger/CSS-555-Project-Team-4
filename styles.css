@@ -32,7 +32,7 @@ li {
 }
 
 #display{
-    display:float;
+    display:block;
     margin-left:auto;
     margin-right:auto;
     background-color:#062320;
@@ -74,7 +74,7 @@ li {
 }
 
 #left-panel{
-    display:float;
+    display:block;
     float:left;
     width:20%;
     padding:0;
@@ -100,6 +100,36 @@ li {
 
 #left-panel button:active{
     background-color:#c9c9c9;
+}
+
+#right-panel{
+    display:float;
+    float:right;
+    width:20%;
+    padding:0;
+    margin:80px auto auto 0px;
+    background-color:#4A948D;
+}
+
+#login-btn{
+    background-color:white;
+    display:block;
+    float:right;
+    width:45%;
+}
+
+#right-input-fields{
+    display:block;
+    width:100%;
+    margin:auto;
+}
+
+#right-panel input{
+    background-color:#062320;
+    color:white;
+    display:inline-block;
+    margin:auto;
+    width:45%;
 }
 
 .drop-content{

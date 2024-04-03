@@ -67,13 +67,33 @@
           </div>
           <div id="response" style="display:none"></div>
     </div>
-  <script src="upload.js"></script>
-  <script>
-    document.getElementById("submitBtn").addEventListener("click", function() {
-      uploadFile();
-    });
- </script>
+    <!--import function for uploading file-->
+    <script src="upload.js"></script>
+    <!--call upload file script when clicking submit button-->
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", function() {
+        uploadFile();
+      });
+    </script>
   
+  <div id="right-panel">
+    <div id="login">
+      <div id="current-login">
+        You are currently logged in as:
+      </div>
+      <div id="right-input-fields">
+        <input type="text" id="username" name="username" placeholder="Username">
+        <input type="password" id="password" name="password" placeholder="Password">
+      </div>
+      <div id="login-btn">
+        Log In
+      </div>
+    </div>
+    <div id="filelist">
+      
+    </div>
+  </div>
+
 
     <!-- Brain Browser Display-->
     <div id="display" style="width:800px;height:800px;">
@@ -83,101 +103,104 @@
       </div>  
     </div>
 
-  <!-- animations-->
-  <script>
+    
 
-    function fadeAnimation(elementID){
-      document.getElementById(elementID).addEventListener("click", function() {
+    <!-- animations-->
+    <script>
 
-      //fade animation
-      var fadeTarget = document.getElementById("display-transition")
-      fadeTarget.classList.add("fade");
+      function fadeAnimation(elementID){
+        document.getElementById(elementID).addEventListener("click", function() {
 
-      // Wait until the animation is over and then remove the class
-      setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
-      });
+        //fade animation
+        var fadeTarget = document.getElementById("display-transition")
+        fadeTarget.classList.add("fade");
 
-    }
-      //remove initial brain-browser-window animation
-      setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},3000);
-
-      //buttons make brain fade out then in while new data is loaded
-      fadeAnimation("load-ex1");
-      fadeAnimation("load-ex2");
-
-      fadeAnimation("drop-ex1");
-      fadeAnimation("drop-ex2");
-      fadeAnimation("drop-ex3");
-      fadeAnimation("drop-ex4");
-      fadeAnimation("drop-ex5");
-
-      //dropdown menus set visibility
-      var dropdown = document.getElementsByClassName("dropdown-menu");
-      for(var i = 0;i<dropdown.length;i++){
-
-        dropdown[i].addEventListener("mouseover",function() {
-          var content = this.querySelector(".drop-content");
-          content.style.display = "block";
-          content.style.animation = "dropdown-slide 1s";
-          content.style.maxHeight = content.scrollHeight + "px";
+        // Wait until the animation is over and then remove the class
+        setTimeout(function(){fadeTarget.classList.remove("fade");}, 1000);
         });
 
-        dropdown[i].addEventListener("mouseout",function() {
-          var content = this.querySelector(".drop-content");
-          content.style.display = "none";
-          content.style.animation = "dropdown-slide 1s reverse";
-          content.style.maxHeight = "0";
-        });
       }
+        //remove initial brain-browser-window animation
+        setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},3000);
+
+        //buttons make brain fade out then in while new data is loaded
+        fadeAnimation("load-ex1");
+        fadeAnimation("load-ex2");
+
+        fadeAnimation("drop-ex1");
+        fadeAnimation("drop-ex2");
+        fadeAnimation("drop-ex3");
+        fadeAnimation("drop-ex4");
+        fadeAnimation("drop-ex5");
+
+        //dropdown menus set visibility
+        var dropdown = document.getElementsByClassName("dropdown-menu");
+        for(var i = 0;i<dropdown.length;i++){
+
+          dropdown[i].addEventListener("mouseover",function() {
+            var content = this.querySelector(".drop-content");
+            content.style.display = "block";
+            content.style.animation = "dropdown-slide 1s";
+            content.style.maxHeight = content.scrollHeight + "px";
+          });
+
+          dropdown[i].addEventListener("mouseout",function() {
+            var content = this.querySelector(".drop-content");
+            content.style.display = "none";
+            content.style.animation = "dropdown-slide 1s reverse";
+            content.style.maxHeight = "0";
+          });
+        }
     </script>
 
     <!-- Brain Browser Initalization Script -->
     <script>
-        BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
-        BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
-            viewer.render();
-            viewer.loadModelFromURL("brain-surface.obj")
+          BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
+          BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
+              viewer.render();
+              viewer.loadModelFromURL("brain-surface.obj")
 
 
-            // Load Example 1 Button Event Listener
-            document.getElementById("load-ex1").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
-                viewer.loadIntensityDataFromURL("./converted.txt");
-            });
+              // Load Example 1 Button Event Listener
+              document.getElementById("load-ex1").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
+                  viewer.loadIntensityDataFromURL("./converted.txt");
+              });
 
 
-            // Load Example 2 Button Event Listener
-            document.getElementById("load-ex2").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
-                viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
-            });
+              // Load Example 2 Button Event Listener
+              document.getElementById("load-ex2").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+                  viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+              });
 
-            document.getElementById("drop-ex1").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/blue.txt");
-            });
+              document.getElementById("drop-ex1").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/blue.txt");
+              });
 
-            document.getElementById("drop-ex2").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/green.txt");
-            });
+              document.getElementById("drop-ex2").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/green.txt");
+              });
 
-            document.getElementById("drop-ex3").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/gray-scale.txt");
-            });
+              document.getElementById("drop-ex3").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/gray-scale.txt");
+              });
 
-            document.getElementById("drop-ex4").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
-            });
+              document.getElementById("drop-ex4").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+              });
 
-            document.getElementById("drop-ex5").addEventListener("click", function() {
-                viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
-            });
+              document.getElementById("drop-ex5").addEventListener("click", function() {
+                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
+              });
 
-            // Set the background color.
-            viewer.setClearColor(0x062320);
-        });
+              // Set the background color.
+              viewer.setClearColor(0x062320);
+          });
     </script>
-       <!-- <script type="module" src ="index.js"></script> -->
-        <!--<script src = "submit.js"> </script> -->
+
+    <!-- <script type="module" src ="index.js"></script> -->
+    <!--<script src = "submit.js"> </script> -->
   </body>
 </html>
 
