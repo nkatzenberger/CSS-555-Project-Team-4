@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 from BaseExample import model
 from run import convertToBB
+from submit import uploadToFirebase
 #from BaseExample import model
 
 # Get the absolute path to the project root directory
@@ -32,7 +33,8 @@ def upload():
         model.runModel(file, ['RA', 'RV'], file.filename[11:13])
     else:
         model.runModel(file)
-    convertToBB("Test_result_evoked_" + file.filename[11:])
+    convertToBB("output.mat")
+    uploadToFirebase(file.filename)
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
     return response

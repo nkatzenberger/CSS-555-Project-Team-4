@@ -165,7 +165,7 @@ def ConvDip_ESI(task_id, result_path, file=None):
         else:
             data_mat = test_data_dir + '/evoked_' + 'eeg' + '_' + str(run) + '.mat'
             
-            result_mat = result_dir + '/Test_result_' + 'evoked_' + str(run) + '.mat'
+            result_mat = result_dir + '/output.mat' #Change this when altering name of file
         
             # load the real dataset
             dataset = None
@@ -233,7 +233,7 @@ def load_result(task, result_path):
         raise Exception("Oops! That was not a valid task. Try use 'LA', 'RA', 'LV' or 'RV'!")
     else:
         print("load result for task: {}".format(task))
-        fname = result_path + '/sample/Test_result_evoked_' + str(task) + '.mat'
+        fname = result_path + 'sample/output.mat' #Change this when altering name of file
         dataset = sio.loadmat(fname)
         s_pred = dataset['s_pred']
         s_pred = np.absolute(s_pred)
