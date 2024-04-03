@@ -149,6 +149,39 @@ li {
     width:100%;
 }
 
+#filelist{
+    display:block;
+    height:50%;
+    overflow:auto;
+    font-size: 14pt;
+    font-weight:bold;
+}
+
+#filelist-header{
+    background-color:#3B7771;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size: 14pt;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.file{
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left:20px;
+    margin-right:10px;
+    font-size:12pt;
+    color:rgb(48, 48, 48);
+    transition: background 0.3s ease-in-out
+}
+
+.file:hover{
+    background-color:#366c66;
+}
+
 .drop-content{
     display:none;
 }
