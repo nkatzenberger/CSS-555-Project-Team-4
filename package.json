@@ -3,6 +3,7 @@
     "@google-cloud/storage": "^7.9.0",
     "commonjs": "^0.0.1",
     "express": "^4.19.2",
+    "firebaseui": "^6.1.0",
     "multer": "^1.4.5-lts.1",
     "three": "^0.161.0"
   }
