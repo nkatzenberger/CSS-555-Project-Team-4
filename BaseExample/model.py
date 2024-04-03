@@ -46,10 +46,3 @@ def runModel(file=None, tasks = ['RV', 'RA'], task = 'RV'):
     """""
     hemi='split' # choose from ['lh', 'rh', 'split', 'both']
     brain.brain3d(s_pred, hemi)"""
-
-
-# In[ ]:
-
-
-
-
