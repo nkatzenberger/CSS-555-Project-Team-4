@@ -54,7 +54,7 @@
           </div>
           <div>
             <h3>Upload Patient Data</h3>
-            <input type="file" id="up" class="hover-effect">
+            <input type="file" id="up" class="hover-effect" accept=".mat">
             <div style="display: flex; justify-content: center; align-items: center;">
               <button id="submitBtn" class="hover-effect">Submit</button>
               <!-- Loading Circle -->
@@ -65,7 +65,7 @@
             <!-- Status Message -->
             <div id="uploadStatus"></div>
           </div>
-          <div id="response"></div>
+          <div id="response" style="display:none"></div>
     </div>
   <script src="upload.js"></script>
   <script>
@@ -99,7 +99,7 @@
 
     }
       //remove initial brain-browser-window animation
-      setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},2000);
+      setTimeout(function(){document.getElementById('display-transition').classList.remove("loadin");},3000);
 
       //buttons make brain fade out then in while new data is loaded
       fadeAnimation("load-ex1");

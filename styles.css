@@ -51,7 +51,7 @@ li {
 }
 
 .loadin{
-    animation: fadeInAnimation ease 2s;
+    animation: fadeInAnimation ease 3s;
 }
 
 @keyframes fadeInOut{
