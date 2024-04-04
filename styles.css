@@ -277,3 +277,17 @@ footer {
     align-items: center; /* Centers content horizontally */
     overflow-y: auto;
   }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .company-name {
+    font-weight: bold;
+  }
+  
+  .contact-info {
+    text-align: right;
+  }
