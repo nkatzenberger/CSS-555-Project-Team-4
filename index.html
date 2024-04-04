@@ -112,6 +112,9 @@
 
       const container = document.getElementById("filelist")
 
+      // Clear the contents of the filelist div
+      container.innerHTML = "";
+
       fileList.forEach(function(currentFile){
         const fileDiv = document.createElement('div');
 
