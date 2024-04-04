@@ -119,12 +119,14 @@ li {
 }
 
 #login-btn{
+    display:block;
     font-family:inherit;
     font-size:12pt;
     font-weight:bold;
     padding:0;
     border:none;
-    width:100%;
+    width:70%;
+    margin:auto;
     height:25px;
     background-color:#ffffff;
     transition: background 0.3s ease-in-out

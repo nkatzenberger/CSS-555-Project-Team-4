@@ -41,7 +41,7 @@
     <!-- Buttons to load example color maps-->
     <div id="left-panel">
         <button id="load-ex1" class="hover-effect">Load Computed</button>
-        <button id="load-ex2" class="hover-effect">Load Example 2</button>
+        <button id="load-ex2" class="hover-effect">Load Example</button>
         <div class="dropdown-menu">
           <button class="drop hover-effect">Display Selection &#709;</button>
           <div class="drop-content">
@@ -83,70 +83,47 @@
         Current Login: <div id="current-user">Nobody</div>
       </div>
       <div id="right-input-fields">
-        <input type="text" id="username" name="username" placeholder="Email">
-        <input type="password" id="password" name="password" placeholder="Password">
+        <form>
+          <input type="text" id="username" name="username" placeholder="Email">
+          <input type="password" id="password" name="password" placeholder="Password">
+        </form>
       </div>
       <div>
         <button id="login-btn">Log In</button>
+        <script>
+          document.getElementById("login-btn").addEventListener("click", function() {
+          src = "Login.js"
+          });
+        </script>
       </div>
     </div>
     <div id="filelist-header">Registered Files:</div>
     <div id="filelist">
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-      <div class="file">
-        Example.mat
-      </div>
-
-      <script>
-        document.getElementById("login-Btn").addEventListener("click", function() {
-        src = "Login.js"
-        } 
-        );
-        /*import { getStorage, ref, listAll } from "firebase/storage";
-
-    const storage = getStorage();
-
-    // Create a reference under which you want to list
-    const listRef = ref(storage, 'files/uid');
-
-    // Find all the prefixes and items.
-    listAll(listRef)
-      .then((res) => {
-        res.prefixes.forEach((folderRef) => {
-          // All the prefixes under listRef.
-          // You may call listAll() recursively on them.
-        });
-        res.items.forEach((itemRef) => {
-          // All the items under listRef.
-        });
-      }).catch((error) => {
-      }); */
-      </script>
     </div>
   </div>
+  <!--get files list function-->
+  <script src="getFiles.js"></script>
+  <!--Use getFiles function to get a list and iterate over it to populate file list-->
+  <script>
+    document.getElementById("login-btn").addEventListener("click", function() {
+      //const fileList = getFiles("DefaultUser");        This is going to be the actual line
+      //this is for testing
+      const fileList = ["example.mat","example.mat","example.mat"];
+
+      const container = document.getElementById("filelist")
+
+      fileList.forEach(function(currentFile){
+        const fileDiv = document.createElement('div');
+
+        fileDiv.classList.add("file");
+        fileDiv.textContent = currentFile;
+
+        container.appendChild(fileDiv);
+      });
+    });
+
+    
+  </script>
 
     <!-- Brain Browser Display-->
   <div id="content-container"> 
