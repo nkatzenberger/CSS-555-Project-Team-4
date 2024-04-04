@@ -27,6 +27,8 @@
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/loading.js"></script>
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/rendering.js"></script>
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/views.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
 
     <title>EEG Seizure Detection</title>
   </head>
@@ -79,43 +81,17 @@
   <div id="right-panel">
     <div id="login">
       <div id="current-login">
-        <!-- Use js to change current-user, when you do, change text color to green-->
-        Current Login: <div id="current-user">Nobody</div>
+        You are currently logged in as:
       </div>
       <div id="right-input-fields">
         <input type="text" id="username" name="username" placeholder="Username">
         <input type="password" id="password" name="password" placeholder="Password">
       </div>
-      <div>
-        <button id="login-btn">Log In</button>
+      <div id="login-btn">
+        Log In
       </div>
     </div>
     <div id="filelist">
-      <script>
-        document.getElementById("login-Btn").addEventListener("click", function() {
-        src = "Login.js"
-        } 
-        );
-        /*import { getStorage, ref, listAll } from "firebase/storage";
-
-    const storage = getStorage();
-
-    // Create a reference under which you want to list
-    const listRef = ref(storage, 'files/uid');
-
-    // Find all the prefixes and items.
-    listAll(listRef)
-      .then((res) => {
-        res.prefixes.forEach((folderRef) => {
-          // All the prefixes under listRef.
-          // You may call listAll() recursively on them.
-        });
-        res.items.forEach((itemRef) => {
-          // All the items under listRef.
-        });
-      }).catch((error) => {
-      }); */
-      </script>
     </div>
   </div>
 
