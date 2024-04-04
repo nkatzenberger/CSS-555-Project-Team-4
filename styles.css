@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     background-color:#3C3C3C;
+    overflow-y: auto;
 }
 
 #top-bar{
@@ -258,4 +259,21 @@ input{
     display: none;
     transition: max-height 0.5s ease-in-out;
     max-height: 0;
+  }
+
+footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 800px;
+    background-color: #4A948D;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+  }
+
+  #content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    overflow-y: auto;
   }
