@@ -89,24 +89,19 @@
           <input type="password" id="password" name="password" placeholder="Password">
         </form>
       </div>
-      <div>
         <button id="login-btn">Log In</button>
-        <script>
-          document.getElementById("login-btn").addEventListener("click", function() {
-          src = "Login.js"
-          });
-        </script>
-      </div>
     </div>
     <div id="filelist-header">Registered Files:</div>
     <div id="filelist">
     </div>
   </div>
   <!--get files list function-->
-  <script src="getFiles.js"></script>
+  <script type= "module" src="getFiles.js"></script>
+  <script type="module" src="Login.js"></script>
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script>
     document.getElementById("login-btn").addEventListener("click", function() {
+      
       //const fileList = getFiles("DefaultUser");        This is going to be the actual line
       //this is for testing
       const fileList = ["example.mat","example.mat","example.mat"];

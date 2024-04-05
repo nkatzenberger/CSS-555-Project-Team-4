@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword, credentials } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, credentials } from "./firebase/auth";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 var email = document.getElementById("username");
