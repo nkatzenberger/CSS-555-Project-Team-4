@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     background-color:#3C3C3C;
+    overflow-y: auto;
 }
 
 #top-bar{
@@ -118,15 +119,25 @@ li {
 }
 
 #login-btn{
+    display:block;
     font-family:inherit;
     font-size:12pt;
     font-weight:bold;
     padding:0;
     border:none;
-    width:100%;
+    width:70%;
+    margin:auto;
     height:25px;
     background-color:#ffffff;
     transition: background 0.3s ease-in-out
+}
+
+#login-btn:hover{
+    background-color:#e4e4e4;
+}
+
+#login-btn:active{
+    background-color:#c9c9c9;
 }
 
 #right-input-fields{
@@ -147,6 +158,41 @@ li {
     display:inline-block;
     margin:auto;
     width:100%;
+}
+
+#filelist{
+    display:block;
+    height:50%;
+    overflow:auto;
+    font-size: 14pt;
+    font-weight:bold;
+    box-shadow: inset 6px 0px 3px 2px #3B7771;
+}
+
+#filelist-header{
+    background-color:#3B7771;
+    color:lightgray;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size: 14pt;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.file{
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left:20px;
+    margin-right:10px;
+    font-size:12pt;
+    color:rgb(48, 48, 48);
+    transition: background 0.3s ease-in-out
+}
+
+.file:hover{
+    background-color:#366c66;
 }
 
 .drop-content{
@@ -225,4 +271,40 @@ input{
     display: none;
     transition: max-height 0.5s ease-in-out;
     max-height: 0;
+  }
+
+footer {
+    position:fixed;
+    bottom:0;
+    width: 792px;
+    background-color: #4A948D;
+    padding: 4px;
+    color: white;
+    border-radius: 5px;
+  }
+
+  #content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    overflow-y: auto;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .company-name {
+    font-weight: bold;
+  }
+  
+  .contact-info {
+    text-align: right;
+  }
+
+  footer p{
+    margin-top:2px;
+    margin-bottom:2px;
   }

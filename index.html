@@ -43,7 +43,7 @@
     <!-- Buttons to load example color maps-->
     <div id="left-panel">
         <button id="load-ex1" class="hover-effect">Load Computed</button>
-        <button id="load-ex2" class="hover-effect">Load Example 2</button>
+        <button id="load-ex2" class="hover-effect">Load Example</button>
         <div class="dropdown-menu">
           <button class="drop hover-effect">Display Selection &#709;</button>
           <div class="drop-content">
@@ -84,19 +84,53 @@
         You are currently logged in as:
       </div>
       <div id="right-input-fields">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="password" id="password" name="password" placeholder="Password">
+        <form>
+          <input type="text" id="username" name="username" placeholder="Email">
+          <input type="password" id="password" name="password" placeholder="Password">
+        </form>
       </div>
-      <div id="login-btn">
-        Log In
+      <div>
+        <button id="login-btn">Log In</button>
+        <script>
+          document.getElementById("login-btn").addEventListener("click", function() {
+          src = "Login.js"
+          });
+        </script>
       </div>
     </div>
+    <div id="filelist-header">Registered Files:</div>
     <div id="filelist">
     </div>
   </div>
+  <!--get files list function-->
+  <script src="getFiles.js"></script>
+  <!--Use getFiles function to get a list and iterate over it to populate file list-->
+  <script>
+    document.getElementById("login-btn").addEventListener("click", function() {
+      //const fileList = getFiles("DefaultUser");        This is going to be the actual line
+      //this is for testing
+      const fileList = ["example.mat","example.mat","example.mat"];
 
+      const container = document.getElementById("filelist")
+
+      // Clear the contents of the filelist div
+      container.innerHTML = "";
+
+      fileList.forEach(function(currentFile){
+        const fileDiv = document.createElement('div');
+
+        fileDiv.classList.add("file");
+        fileDiv.textContent = currentFile;
+
+        container.appendChild(fileDiv);
+      });
+    });
+
+    
+  </script>
 
     <!-- Brain Browser Display-->
+  <div id="content-container"> 
     <div id="display" style="width:800px;height:800px;">
       <div class="loadin" id="display-transition">
         <div id="brainbrowser">
@@ -104,8 +138,17 @@
       </div>  
     </div>
 
-    
-
+    <footer>
+      <div class="footer-content">
+        <div class="company-name">F&S Digital, LLC</div>
+        <div class="contact-info">
+          <p>(800)-262-5108</p>
+          <p>hello@differnt.com</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
     <!-- animations-->
     <script>
 
