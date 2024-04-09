@@ -1,4 +1,3 @@
-
 from firebase_admin import credentials, initialize_app, storage
 # Init firebase with credentials
 cloudkeys = credentials.Certificate("./NewCreds.json")
@@ -11,4 +10,3 @@ def uploadToFirebase(f):
   blob.make_public()
   #print("your file at the url", blob.public_url, "was uploaded successfully")
   return (blob)
-#Removed Smells: Too many comments and bad variable names

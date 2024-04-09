@@ -27,8 +27,7 @@
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/loading.js"></script>
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/rendering.js"></script>
     <script src="brainbrowser\src\brainbrowser\surface-viewer\modules/views.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+    <script type="module" src="firebase.js"></script>
 
     <title>EEG Seizure Detection</title>
   </head>
@@ -84,12 +83,17 @@
         You are currently logged in as:
       </div>
       <div id="right-input-fields">
+        <div id="Login-errs"></div>
+      <script> 
+      document.getElementById("Login-errs").style.display = "none";
+      </script>
+
         <form>
-          <input type="text" id="username" name="username" placeholder="Email">
+          <input type="email" id="username" name="username" placeholder="Email">
           <input type="password" id="password" name="password" placeholder="Password">
         </form>
       </div>
-        <button id="login-btn">Log In</button>
+      <button id="login-btn">Log In</button>
     </div>
     <div id="filelist-header">Registered Files:</div>
     <div id="filelist">
