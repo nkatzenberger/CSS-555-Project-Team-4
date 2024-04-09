@@ -1,10 +1,12 @@
 import unittest
 import submit
 from firebase_admin import storage
+import os
 
 class testUpload(unittest.TestCase):
     def test_submit(self):
-        file_names = ["/data/evoked_eeg_RV.mat", "/data/evoked_eeg_RA.mat", "/data/evoked_eeg_LV.mat", "/data/evoked_eeg_LA.mat"]
+        base_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'data')
+        file_names = ["evoked_eeg_RV.mat", "evoked_eeg_RA.mat", "evoked_eeg_LV.mat", "evoked_eeg_LA.mat"]
         for file in file_names:
             blob1 = submit.uploadToFirebase(file)
             bucket = storage.bucket()
