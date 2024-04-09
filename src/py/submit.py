@@ -1,7 +1,7 @@
 
 from firebase_admin import credentials, initialize_app, storage
 # Init firebase with credentials
-cloudkeys = credentials.Certificate("./NewCreds.json")
+cloudkeys = credentials.Certificate("../NewCreds.json")
 initialize_app(cloudkeys, {'storageBucket': 'eegdata-93ae1.appspot.com'}) #calls to firebasse bucket
 def uploadToFirebase(f):
   fileName = f 
