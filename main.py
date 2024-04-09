@@ -1,10 +1,10 @@
 from flask import Flask, request, render_template, make_response
 from flask_cors import CORS
 import os
-from src.BaseExample import model
+from BaseExample import model
 import scipy.io
 import pandas as pd
-from submit import uploadToFirebase
+from src.py.submit import uploadToFirebase
 # Convert ConvDip data into brainbrowser format
 def convertToBB(filename):
     # Construct the full file path
