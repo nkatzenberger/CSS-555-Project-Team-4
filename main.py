@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, make_response
 from flask_cors import CORS
 import os
-from BaseExample import model
+from src.BaseExample import model
 import scipy.io
 import pandas as pd
 from submit import uploadToFirebase
@@ -22,7 +22,7 @@ def convertToBB(filename):
     single_column_df = df.to_string(index=False, header=False)
     
     # Write the string to a file
-    file = open("converted.txt", "w")
+    file = open("./data/converted.txt", "w")
     file.write(str(single_column_df))
     file.close()
 

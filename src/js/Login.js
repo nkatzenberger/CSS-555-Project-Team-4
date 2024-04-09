@@ -4,7 +4,7 @@ const auth = getAuth(app);
 var email = document.getElementById("username");
 var password = document.getElementById("password");
 var loginButton = document.getElementById("login-btn");
-cloudkeys = credentials.Certificate("./NewCreds.json");
+cloudkeys = credentials.Certificate("../NewCreds.json");
 loginButton.addEventListener("click", function() {
 signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {

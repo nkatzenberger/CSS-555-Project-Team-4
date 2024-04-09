@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link rel="stylesheet" type="text/css" href="./styles.css"> 
+    <link rel="stylesheet" type="text/css" href="./public/css/styles.css"> 
     <link type="text/css" href="brainbrowser/examples/css/ui-darkness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
     <link type="text/css" href="brainbrowser/examples/css/common.css" rel="Stylesheet" />
     <link type="text/css" href="brainbrowser/examples/css/surface-viewer-demo.css" rel="Stylesheet" />
@@ -70,7 +70,7 @@
           <div id="response" style="display:none"></div>
     </div>
     <!--import function for uploading file-->
-    <script src="upload.js"></script>
+    <script src="./src/js/upload.js"></script>
     <!--call upload file script when clicking submit button-->
     <script>
       document.getElementById("submitBtn").addEventListener("click", function() {
@@ -96,8 +96,8 @@
     </div>
   </div>
   <!--get files list function-->
-  <script type= "module" src="getFiles.js"></script>
-  <script type="module" src="Login.js"></script>
+  <script type= "module" src="src/js/getFiles.js"></script>
+  <script type="module" src="src/js/Login.js"></script>
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script>
     document.getElementById("login-btn").addEventListener("click", function() {
@@ -197,40 +197,40 @@
           BrainBrowser.config.set("worker_dir","brainbrowser/src/brainbrowser/workers");
           BrainBrowser.SurfaceViewer.start("brainbrowser", function(viewer) {
               viewer.render();
-              viewer.loadModelFromURL("brain-surface.obj")
+              viewer.loadModelFromURL("src/brain-surface.obj")
 
 
               // Load Example 1 Button Event Listener
               document.getElementById("load-ex1").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
-                  viewer.loadIntensityDataFromURL("./converted.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/thermal.txt");
+                  viewer.loadIntensityDataFromURL("./data/converted.txt");
               });
 
 
               // Load Example 2 Button Event Listener
               document.getElementById("load-ex2").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
-                  viewer.loadIntensityDataFromURL("./unzippedExamples/intensity/atlas-values.txt")
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/spectral.txt");
+                  viewer.loadIntensityDataFromURL("./data/unzippedExamples/intensity/atlas-values.txt")
               });
 
               document.getElementById("drop-ex1").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/blue.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/blue.txt");
               });
 
               document.getElementById("drop-ex2").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/green.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/green.txt");
               });
 
               document.getElementById("drop-ex3").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/gray-scale.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/gray-scale.txt");
               });
 
               document.getElementById("drop-ex4").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/spectral.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/spectral.txt");
               });
 
               document.getElementById("drop-ex5").addEventListener("click", function() {
-                  viewer.loadColorMapFromURL("./unzippedExamples/colormaps/thermal.txt");
+                  viewer.loadColorMapFromURL("./data/unzippedExamples/colormaps/thermal.txt");
               });
 
               // Set the background color.
