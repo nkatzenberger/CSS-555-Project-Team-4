@@ -76,11 +76,14 @@
         uploadFile();
       });
     </script>
-  
   <div id="right-panel">
+    <a href="signup.html">
+      <button>Sign Up</button>
+  </a>
+  <button id = "signOut-btn">Sign Out</button>
     <div id="login">
       <div id="current-login">
-        You are currently logged in as:
+        Sign in to view uploaded files:
       </div>
       <div id="right-input-fields">
         <div id="Login-errs"></div>
@@ -102,6 +105,7 @@
   <!--get files list function-->
   <script type= "module" src="src/js/getFiles.js"></script>
   <script type="module" src="src/js/Login.js"></script>
+  <script type = "module" src ="src/js/signout.js"></script>
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script>
     document.getElementById("login-btn").addEventListener("click", function() {

@@ -1,0 +1,41 @@
+<html lang="en">
+    Sign Up to Store EEG Files<br>
+    <script type="module" src="firebase.js"></script>
+    <form> 
+        Enter your email
+        <input type="email" id="email" name="email" placeholder="example@gmail.com"> <br>
+        Enter a password
+        <input type="password" id="password" name="password" placeholder="Password"> <br>
+    </form>
+    <button id = "subm-btn">Submit</button>
+    <script type = "module">
+        import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+        const auth = getAuth();
+        var signupbtn = document.getElementById("subm-btn");
+        signupbtn.addEventListener("click", function() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+            if (email == '' || password == '') {
+			document.getElementById('signup-errs').innerHTML = "Missing Email or Password!";
+			document.getElementById('signup-errs').style.display = "inline";
+		}
+        
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    window.location.href = "index.html";
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    document.getElementById('signup-errs').style.display = "inline";
+    document.getElementById('signup-errs').innerHTML = errorMessage ;
+  });
+});
+    </script>
+    <div id="signup-errs"></div>
+    <script> 
+    document.getElementById("signup-errs").style.display = "none";
+    </script>
+</html>

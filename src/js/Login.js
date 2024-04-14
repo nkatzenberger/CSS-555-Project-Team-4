@@ -24,18 +24,17 @@ let password = document.getElementById("password").value;
           document.getElementById('Login-errs').style.display = "inline"; */
         }
       
-
+      }); 
 onAuthStateChanged(auth, (user) => {
   if (user) {
       const uid = user.uid;
-      document.getElementById("current-login").innerHTML =  document.getElementById("current-login").innerHTML + " " + user.email;
+      document.getElementById("current-login").innerHTML =  "You are currently logged in as: " + user.email;
       // ...
   } else { 
-    //  document.getElementById("current-login").innerHTML = "User Signed Out";//needs to move to signout Function
-      // ...
+      document.getElementById("current-login").innerHTML = "Sign in to view uploaded files:";
     }
   });
-}); 
+
 
 
 
