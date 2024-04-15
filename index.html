@@ -108,8 +108,10 @@
   </div>
   <!--get files list function-->
   <script type="module" src="src/js/getFiles.js"></script>
+
   <script type="module" src="src/js/Login.js"></script>
   <script type ="module" src ="src/js/signout.js"></script>
+
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script type="module">
     import getFiles from './src/js/getFiles.js';
@@ -119,7 +121,7 @@
         .then(fileList => {
             // Clear the contents of the filelist div
             const container = document.getElementById("filelist");
-            container.innerHTML = "";
+            //container.innerHTML = "";
 
             // Iterate over the fileList and populate the file list
             fileList.forEach(currentFile => {
@@ -128,6 +130,26 @@
                 fileDiv.textContent = currentFile;
                 container.appendChild(fileDiv);
             });
+
+            /*
+            Make OnClick of a file in the fileList load that file into the model
+            */
+            // Get all elements with the file class
+            const elements = document.querySelectorAll('.file');
+
+            // Add event listener to each element
+            elements.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    // Identify which element was clicked
+                    const clickedFile = event.target;
+                    
+                    // load the file into the ML model
+                    console.log('Clicked element:', clickedElement);
+                  
+
+                });
+            });
+
         })
         .catch(error => {
             // Handle any errors
@@ -135,6 +157,10 @@
         });
     });
 
+    
+  </script>
+  <!--Make OnClick of a file in the fileList load that file into the model-->
+  <script>
     
   </script>
 

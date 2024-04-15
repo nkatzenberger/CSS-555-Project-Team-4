@@ -59,6 +59,11 @@ def upload():
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
     return response
 
+@app.route('/loadFromList',methods=['GET'])
+def loadFile():
+    filename=request.args.get('filename')
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
 
