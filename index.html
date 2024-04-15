@@ -86,47 +86,53 @@
         Sign in to view uploaded files:
       </div>
       <div id="right-input-fields">
-        <div id="Login-errs"></div>
-      <script> 
-      document.getElementById("Login-errs").style.display = "none";
-      </script>
 
         <form>
           <input type="email" id="username" name="username" placeholder="Email">
           <input type="password" id="password" name="password" placeholder="Password">
         </form>
+
+        <div id="Login-errs"></div>
+        <script> 
+        document.getElementById("Login-errs").style.display = "none";
+        </script>
+
       </div>
       <button id="login-btn">Log In</button>
     </div>
-    <div id="filelist-header">Registered Files:</div>
+    <div id="filelist-header">Registered Files:
+      <button id="refresh-files" styles="float:right">Refresh</button>
+    </div>
     <div id="filelist">
     </div>
   </div>
   <!--get files list function-->
-  <script type= "module" src="src/js/getFiles.js"></script>
+  <script type="module" src="src/js/getFiles.js"></script>
   <script type="module" src="src/js/Login.js"></script>
-  <script type = "module" src ="src/js/signout.js"></script>
+  <script type ="module" src ="src/js/signout.js"></script>
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
-  <script>
-    document.getElementById("login-btn").addEventListener("click", function() {
-      
-      //const fileList = getFiles("DefaultUser");        This is going to be the actual line
-      //this is for testing
-      const fileList = ["example.mat","example.mat","example.mat"];
+  <script type="module">
+    import getFiles from './src/js/getFiles.js';
+    document.getElementById("refresh-files").addEventListener("click", function() {
+      //getFiles() is a promise so needs to be handled asyncronously using '.then'
+      getFiles("DefaultUser")
+        .then(fileList => {
+            // Clear the contents of the filelist div
+            const container = document.getElementById("filelist");
+            container.innerHTML = "";
 
-      const container = document.getElementById("filelist")
-
-      // Clear the contents of the filelist div
-      container.innerHTML = "";
-
-      fileList.forEach(function(currentFile){
-        const fileDiv = document.createElement('div');
-
-        fileDiv.classList.add("file");
-        fileDiv.textContent = currentFile;
-
-        container.appendChild(fileDiv);
-      });
+            // Iterate over the fileList and populate the file list
+            fileList.forEach(currentFile => {
+                const fileDiv = document.createElement('div');
+                fileDiv.classList.add("file");
+                fileDiv.textContent = currentFile;
+                container.appendChild(fileDiv);
+            });
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('Error fetching files:', error);
+        });
     });
 
     

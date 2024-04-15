@@ -1,32 +1,25 @@
-import {getStorage, ref, listAll } from "firebase/storage";
+import {getStorage, ref, listAll } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
 
 /*
 takes "user" as argument to determine from which database folder to pull filenames from
 "DefaultUser is the value that should be passed to get some default files"
 */
-function getFiles(user){
+function getFiles(user) {
+  console.log("getfiles initialized");
   const storage = getStorage();
 
-  // Create a reference under which you want to list
-  const listRef = ref(storage, 'files/uid/' + user);
+  const listRef = ref(storage, 'gs://eegdata-93ae1.appspot.com/' + user);
 
-  var files = [];
-  
-  // Find all the prefixes and items.
-  listAll(listRef)
-    .then((res) => {
-      res.prefixes.forEach((folderRef) => {
-        // All the prefixes under listRef.
-        // You may call listAll() recursively on them.
+  return listAll(listRef)
+      .then((res) => {
+          const files = res.items.map(itemRef => itemRef.name); // Extract filenames
+          console.log("files in folder:", files);
+          return files;
+      })
+      .catch((error) => {
+          console.error("error occurred:", error);
+          throw error; // Propagate the error
       });
-      res.items.forEach((itemRef) => {
-        // All the items under listRef.
-        files.push(itemRef);
-      });
-    }).catch((error) => {
-      //error occurred
-    });
-
-    return files;
 }
 
+export default getFiles;
