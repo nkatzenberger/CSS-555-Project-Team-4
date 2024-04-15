@@ -145,7 +145,11 @@
                     
                     // load the file into the ML model
                     console.log('Clicked element:', clickedElement);
-                  
+                    //make a request to flask
+                      //pass in the file name and folder name(user email but with special characters removed)
+                      //call brainBrowserload after this processing is done
+                    viewer.loadIntensityDataFromURL("./data/converted.txt");
+                    //add loading circle functionality here
 
                 });
             });

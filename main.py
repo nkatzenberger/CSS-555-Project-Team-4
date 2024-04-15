@@ -62,6 +62,13 @@ def upload():
 @app.route('/loadFromList',methods=['GET'])
 def loadFile():
     filename=request.args.get('filename')
+    foldername=request.args.get('foldername')
+
+    #make a firebase request for the file
+    #use that file to run all of the model functions
+    #update converted.txt
+
+    #let caller know that methods are done so it can be loaded into browser window
 
 
 if __name__ == '__main__':
