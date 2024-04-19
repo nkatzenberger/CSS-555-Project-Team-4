@@ -13,7 +13,7 @@ let password = document.getElementById("password").value;
         .then((userCredential) => {
           // Signed in
           var user = userCredential.user;
-          // ...
+          document.getElementById("signOut-btn").style.display = "inline";
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -29,12 +29,32 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
       const uid = user.uid;
       document.getElementById("current-login").innerHTML =  "You are currently logged in as: " + user.email;
-      // ...
-  } else { 
+      //Send email to main.py
+      var email = user.email; 
+      
+      //inputUrl = new URL('http://localhost:8000/email?key =' +email.toString());
+    
+      $.ajax({
+        url: 'http://localhost:8000/email?value=' + email.toString(),  // Your Flask route
+        type: 'POST',
+        contentType: 'application/json',
+        accept: 'application/json',
+        dataType: 'json',
+        success:function (data) {
+          var reply=data.reply;
+          if (reply=="success")
+          {
+              return;
+          }
+          else
+              {
+              alert("some error ocured in session agent")
+              }
+            }
+    }); 
+  } 
+  else { 
       document.getElementById("current-login").innerHTML = "Sign in to view uploaded files:";
+      document.getElementById("signOut-btn").style.display = "none";
     }
-  });
-
-
-
-
+  });  

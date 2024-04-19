@@ -5,6 +5,7 @@ from BaseExample import model
 import scipy.io
 import pandas as pd
 from src.py.submit import uploadToFirebase
+
 # Convert ConvDip data into brainbrowser format
 def convertToBB(filename):
     # Construct the full file path
@@ -38,11 +39,16 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    print(request.files)
     if 'file' not in request.files:
         return 'No file part'
     file = request.files['file']
     if file.filename == '':
         return 'No selected file'
+    readFile = open("./textdocs/emails.txt", "r")
+    email = readFile.readline()
+    uploadToFirebase(file.filename, email)
+    
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
     file.save(file.filename)
@@ -54,16 +60,23 @@ def upload():
     else:
         model.runModel(file)
     convertToBB("output.mat")
-    uploadToFirebase(file.filename)
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
+    
     return response
+    
 
 @app.route('/loadFromList',methods=['GET'])
 def loadFile():
     filename=request.args.get('filename')
 
+@app.route('/email', methods = ['POST'])
+def getEmail():
+    email = request.args.get('value')
+    file = open("./textdocs/emails.txt", "w")
+    file.write(str(email))
+    file.close()
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
-

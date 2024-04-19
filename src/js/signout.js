@@ -5,6 +5,7 @@ const auth = getAuth();
 signOut(auth).then(function() {
     console.log('Signed Out');
     document.getElementById("current-login").innerHTML = "User Signed Out";
+    document.getElementById("signOut-btn").style.display = "none";
 })
   .catch((error) => {
     console.error('Sign Out Error', error);

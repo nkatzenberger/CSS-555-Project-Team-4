@@ -13,9 +13,16 @@ function uploadFile() {
     let formData = new FormData();
     formData.append('file', file);
 
-    fetch('http://localhost:8000/upload', {
+    fetch('/upload',{
         method: 'POST',
-        body: formData
+        body: formData,
+        mode: 'no-cors',
+        credentials: "same-origin",
+        dataType: 'mat',
+        headers: {
+            "Content-Type": "multipart/form-data, text/plain",
+            "Accept" : "multipart/form-data, text/plain",
+    }, 
     })
     .then(response => {
         return response.text();
@@ -31,7 +38,7 @@ function uploadFile() {
     .finally(() => {
         // Hide loading spinner
         document.getElementById('loading').style.display = 'none';
-    });
+    });   
 }
 
 function uuidv4() {
