@@ -5,7 +5,7 @@ from BaseExample import model
 import scipy.io
 import pandas as pd
 from src.py.submit import uploadToFirebase
-
+from firebase_admin import storage
 # Convert ConvDip data into brainbrowser format
 def convertToBB(filename):
     # Construct the full file path
@@ -39,16 +39,11 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    print(request.files)
     if 'file' not in request.files:
         return 'No file part'
     file = request.files['file']
     if file.filename == '':
         return 'No selected file'
-    readFile = open("./textdocs/emails.txt", "r")
-    email = readFile.readline()
-    uploadToFirebase(file.filename, email)
-    
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
     file.save(file.filename)
@@ -60,23 +55,41 @@ def upload():
     else:
         model.runModel(file)
     convertToBB("output.mat")
+    uploadToFirebase(file.filename)
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
-    
     return response
-    
 
 @app.route('/loadFromList',methods=['GET'])
 def loadFile():
     filename=request.args.get('filename')
+    foldername=request.args.get('foldername')
 
-@app.route('/email', methods = ['POST'])
-def getEmail():
-    email = request.args.get('value')
-    file = open("./textdocs/emails.txt", "w")
-    file.write(str(email))
-    file.close()
+    #make a firebase request for the file
+    bucket = storage.bucket()
+    blob = bucket.blob(foldername+"/"+filename)
+
+    downloadDirectory = os.path.join(os.path.dirname(__file__), 'data','loadedFileFromUserList.mat')
+
+    blob.download_to_filename(downloadDirectory)
+    # Use the downloaded file to run all of the model functions
+    task = filename[11:12]  # Extract task from the filename
+    if task == 'L':
+        model.runModel(downloadDirectory, ['LA', 'LV'], filename[11:13])  # Pass the downloaded file
+    elif task == 'R':
+        model.runModel(downloadDirectory, ['RA', 'RV'], filename[11:13])  # Pass the downloaded file
+    else:
+        model.runModel(downloadDirectory)  # Pass the downloaded file
+
+    convertToBB("output.mat")
+    uploadToFirebase(filename)
+    response = make_response('File uploaded successfully')
+    response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
+
+    #let caller know that methods are done so it can be loaded into browser window
+    return response
 
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
+

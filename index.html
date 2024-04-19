@@ -115,9 +115,18 @@
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script type="module">
     import getFiles from './src/js/getFiles.js';
+
     document.getElementById("refresh-files").addEventListener("click", function() {
+
+      document.getElementById("filelist").innerHTML = "";
+
+      //get folder name from current user
+
+      //TODO: add converter to convert the current user's email into a folder name
+      const foldername="DefaultUser";   //temporary implementation
+
       //getFiles() is a promise so needs to be handled asyncronously using '.then'
-      getFiles("DefaultUser")
+      getFiles(foldername)
         .then(fileList => {
             // Clear the contents of the filelist div
             const container = document.getElementById("filelist");
@@ -144,8 +153,29 @@
                     const clickedFile = event.target;
                     
                     // load the file into the ML model
-                    console.log('Clicked element:', clickedElement);
-                  
+                    console.log('Clicked Element:', clickedFile);
+                    const filename=clickedFile.innerHTML;   //get file name from element
+                    console.log('Clicked File:', filename);
+
+                    //make a request to flask
+                    const url = `http://localhost:8000/loadFromList?filename=${filename}&foldername=${foldername}`;
+                    fetch(url)
+                      .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                      })
+                      .then(data => {
+                        console.log(data); // Print the response from the server
+                      })
+                      .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                      });
+                      //pass in the file name and folder name(user email but with special characters removed)
+                      //call brainBrowserload after this processing is done
+                    
+                    //add loading circle functionality here
 
                 });
             });
