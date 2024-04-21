@@ -93,7 +93,8 @@ def loadFile():
 
 @app.route('/email',methods=['POST'])
 def getEmail():
-    email = request.args.get('value')
+    data = request.get_json()
+    email = data['value']
     textf = open("./textdocs/emails.txt", 'w')
     textf.write(email)
 

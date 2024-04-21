@@ -86,17 +86,14 @@
         Sign in to view uploaded files:
       </div>
       <div id="right-input-fields">
-
-        <form>
+        <form id = "login-form">
           <input type="email" id="username" name="username" placeholder="Email">
           <input type="password" id="password" name="password" placeholder="Password">
         </form>
-
         <div id="Login-errs"></div>
         <script> 
         document.getElementById("Login-errs").style.display = "none";
         </script>
-
       </div>
       <button id="login-btn">Log In</button>
     </div>
@@ -119,7 +116,6 @@
     document.getElementById("refresh-files").addEventListener("click", function() {
       const auth = getAuth();
       document.getElementById("filelist").innerHTML = "";
-
       var foldername="DefaultUser";   //temporary implementation
       //get folder name from current user
       onAuthStateChanged(auth, (user) => {

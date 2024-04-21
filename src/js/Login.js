@@ -6,6 +6,7 @@ let email = document.getElementById("username").value;
 let password = document.getElementById("password").value;
 		if (email == '' || password == '') {
 			document.getElementById('Login-errs').innerHTML = "Missing Email or Password!";
+      document.getElementById('Login-errs').style.color = "red";
 			document.getElementById('Login-errs').style.display = "inline";
 		}
     else{
@@ -14,14 +15,16 @@ let password = document.getElementById("password").value;
           // Signed in
           var user = userCredential.user;
           document.getElementById("signOut-btn").style.display = "inline";
+          document.getElementsById("right-input-fields").style.display = "none";
+          document.getElementById('Login-errs').style.display = "none";
         })
         .catch((error) => {
           var errorCode = error.code;
           var errorMessage = error.message;
+          document.getElementById('Login-errs').style.color = "red";
+          document.getElementById("Login-errs").innerHTML = "Incorrect Email or Password!"
+          document.getElementById('Login-errs').style.display = "inline";
         });
-         /*
-          document.getElementById('Login-errs').innerHTML = "Incorrect Username or Password";
-          document.getElementById('Login-errs').style.display = "inline"; */
         }
       
       }); 
@@ -29,16 +32,17 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
       const uid = user.uid;
       document.getElementById("current-login").innerHTML =  "You are currently logged in as: " + user.email;
+      document.getElementById("right-input-fields").style.display = "none";
+      document.getElementById("login-btn").style.display = "none";
       //Send email to main.py
       var email = user.email; 
       
-      //inputUrl = new URL('http://localhost:8000/email?key =' +email.toString());
-    
       $.ajax({
-        url: 'http://localhost:8000/email?value=' + email.toString(),  // Your Flask route
+        url: 'http://localhost:8000/email',  // Your Flask route
         type: 'POST',
         contentType: 'application/json',
         accept: 'application/json',
+        data: JSON.stringify({ 'value': email.toString() }),
         dataType: 'json',
         success:function (data) {
           var reply=data.reply;
