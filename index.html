@@ -115,15 +115,20 @@
   <!--Use getFiles function to get a list and iterate over it to populate file list-->
   <script type="module">
     import getFiles from './src/js/getFiles.js';
-
+    import { getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
     document.getElementById("refresh-files").addEventListener("click", function() {
-
+      const auth = getAuth();
       document.getElementById("filelist").innerHTML = "";
 
+      var foldername="DefaultUser";   //temporary implementation
       //get folder name from current user
-
+      onAuthStateChanged(auth, (user) => {
+		if (user) {
+      foldername = user.email;
+    }
+    });
       //TODO: add converter to convert the current user's email into a folder name
-      const foldername="DefaultUser";   //temporary implementation
+      
 
       //getFiles() is a promise so needs to be handled asyncronously using '.then'
       getFiles(foldername)
