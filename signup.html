@@ -1,13 +1,25 @@
 <html lang="en">
-    Sign Up to Store EEG Files<br>
-    <script type="module" src="firebase.js"></script>
-    <form> 
-        Enter your email
-        <input type="email" id="email" name="email" placeholder="example@gmail.com"> <br>
-        Enter a password
-        <input type="password" id="password" name="password" placeholder="Password"> <br>
-    </form>
-    <button id = "subm-btn">Submit</button>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <link rel="stylesheet" type="text/css" href="./public/css/styles.css"> 
+        <title>EEG Signup</title>
+    </head>
+
+    <div id ="top-bar">
+        <h1>EEG Seizure Detection</h1>
+      </div>  
+      <div id="signup-container">
+        <p class="signup-text">Sign Up to Store EEG Files</p>
+        <form> 
+            Enter your email
+            <input type="email" id="email" name="email" placeholder="example@gmail.com"> <br>
+            Enter a password
+            <input type="password" id="password" name="password" placeholder="Password"> <br>
+        </form>
+        <button id="subm-btn">Submit</button>
+        <div id="signup-errs"></div>
+    </div>
     <script type = "module">
         import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
         const auth = getAuth();
