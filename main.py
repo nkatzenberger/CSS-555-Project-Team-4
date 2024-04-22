@@ -46,10 +46,10 @@ def upload():
         return 'No selected file'
     # Handle the file as required (save, process, etc.)
     # For example, you can save the file:
+    file.save(file.filename)
     f = open("./textdocs/emails.txt", "r")
     email = f.readline()
     uploadToFirebase(file.filename, email)
-    file.save(file.filename, email)
     task = file.filename[11:12]
     if(task== 'L'):
         model.runModel(file, ['LA', 'LV'], file.filename[11:13])
