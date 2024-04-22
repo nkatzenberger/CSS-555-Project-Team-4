@@ -1,12 +1,12 @@
-import {getStorage, ref, listAll } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
-
+import {getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
+const storage = getStorage();
 /*
 takes "user" as argument to determine from which database folder to pull filenames from
 "DefaultUser is the value that should be passed to get some default files"
 */
 function getFiles(user) {
   console.log("getfiles initialized");
-  const storage = getStorage();
+  
 
   const listRef = ref(storage, 'gs://eegdata-93ae1.appspot.com/' + user);
 
@@ -21,5 +21,23 @@ function getFiles(user) {
           throw error; // Propagate the error
       });
 }
+
+function downloadFile(user, filename){
+    const listRef = ref(storage, 'gs://eegdata-93ae1.appspot.com/' + user);
+    const pathRef = ref(storage, './downloadedFiles/');
+    const httpRef = ref(storage, 'https://firebasestorage.googleapis.com/b/bucket/');
+    getDownloadURL(pathRef)
+    .then((url) =>{
+      /*  const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+          const blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();*/
+        getBlob(pathRef)
+    });
+}
+
 
 export default getFiles;
