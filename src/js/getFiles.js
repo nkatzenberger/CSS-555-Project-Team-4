@@ -22,22 +22,4 @@ function getFiles(user) {
       });
 }
 
-function downloadFile(user, filename){
-    const listRef = ref(storage, 'gs://eegdata-93ae1.appspot.com/' + user);
-    const pathRef = ref(storage, './downloadedFiles/');
-    const httpRef = ref(storage, 'https://firebasestorage.googleapis.com/b/bucket/');
-    getDownloadURL(pathRef)
-    .then((url) =>{
-      /*  const xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-          const blob = xhr.response;
-        };
-        xhr.open('GET', url);
-        xhr.send();*/
-        getBlob(pathRef)
-    });
-}
-
-
 export default getFiles;

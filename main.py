@@ -4,7 +4,7 @@ import os
 from BaseExample import model
 import scipy.io
 import pandas as pd
-from src.py.submit import uploadToFirebase
+from src.py.submit import uploadToFirebase, downloadFile
 from firebase_admin import storage
 # Convert ConvDip data into brainbrowser format
 def convertToBB(filename):
@@ -62,29 +62,24 @@ def upload():
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
     return response
 
-@app.route('/loadFromList',methods=['GET'])
+@app.route('/loadFromList', methods=['POST'])
 def loadFile():
-    filename=request.args.get('filename')
-    foldername=request.args.get('foldername')
-
+    json = request.get_json()
+    filename = json['fileName']
+    foldername = json['folderName']
     #make a firebase request for the file
-    bucket = storage.bucket()
-    blob = bucket.blob(foldername+"/"+filename)
-
-    downloadDirectory = os.path.join(os.path.dirname(__file__), 'data','loadedFileFromUserList.mat')
-
-    blob.download_to_filename(downloadDirectory)
+    
+    file = downloadFile(filename, foldername)
     # Use the downloaded file to run all of the model functions
     task = filename[11:12]  # Extract task from the filename
     if task == 'L':
-        model.runModel(downloadDirectory, ['LA', 'LV'], filename[11:13])  # Pass the downloaded file
+        model.runModel(file, ['LA', 'LV'], filename[11:13])  # Pass the downloaded file
     elif task == 'R':
-        model.runModel(downloadDirectory, ['RA', 'RV'], filename[11:13])  # Pass the downloaded file
+        model.runModel(file, ['RA', 'RV'], filename[11:13])  # Pass the downloaded file
     else:
-        model.runModel(downloadDirectory)  # Pass the downloaded file
+        model.runModel(file)  # Pass the downloaded file
 
     convertToBB("output.mat")
-    uploadToFirebase(filename)
     response = make_response('File uploaded successfully')
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any origin
 
@@ -97,7 +92,7 @@ def getEmail():
     email = data['value']
     textf = open("./textdocs/emails.txt", 'w')
     textf.write(email)
-
+    return ("")
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

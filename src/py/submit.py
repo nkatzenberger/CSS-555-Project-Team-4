@@ -16,3 +16,10 @@ def uploadToFirebase(fileName, email = ""):
   blob.upload_from_filename(fileName) 
   blob.make_public()
   return (blob)
+
+def downloadFile(fileName, folderName):
+  bucket = storage.bucket()
+  blob = bucket.blob(folderName+"/"+fileName)
+  downloadDirectory = os.path.join('./downloadedFiles/', fileName)
+  file = blob.download_to_filename(downloadDirectory)
+  return(file)

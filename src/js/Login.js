@@ -44,19 +44,15 @@ onAuthStateChanged(auth, (user) => {
         accept: 'application/json',
         data: JSON.stringify({ 'value': email.toString() }),
         dataType: 'json',
-        success:function (data) {
-          var reply=data.reply;
-          if (reply=="success")
-          {
-              return;
-          }
-          else
-              {
-              alert("some error ocured in session agent")
-              }
-            }
-    }); 
-  } 
+        
+        success: function (response) {
+          console.log(response)
+    },
+    error:function(error){
+        console.log(error)
+    }
+  });
+  }
   else { 
       document.getElementById("current-login").innerHTML = "Sign in to view uploaded files:";
       document.getElementById("signOut-btn").style.display = "none";

@@ -122,13 +122,6 @@
 		if (user) {
       foldername = user.email;
     }
-    /*
-    fetch("./textdocs/emails.txt")
-  .then((res) => res.text())
-  .then(text => foldername)
-  .catch((e) => console.error(e));*/
-      //TODO: add converter to convert the current user's email into a folder name
-      //getFiles() is a promise so needs to be handled asyncronously using '.then'
       getFiles(foldername)
         .then(fileList => {
             // Clear the contents of the filelist div
@@ -150,6 +143,7 @@
             const elements = document.querySelectorAll('.file');
 
             // Add event listener to each element
+            
             elements.forEach(element => {
                 element.addEventListener('click', function(event) {
                     // Identify which element was clicked
@@ -161,44 +155,34 @@
                     console.log('Clicked File:', filename);
 
                     //make a request to flask
-                    const url = `http://localhost:8000/loadFromList?filename=${filename}&foldername=${foldername}`;
-                    fetch(url)
-                      .then(response => {
-                        if (!response.ok) {
-                          throw new Error('Network response was not ok');
+                    const url = `/loadFromList`;
+                    $.ajax(url, {
+                      type: 'POST',
+                      contentType: 'application/json',
+                      accept: 'application/json',
+                      data: JSON.stringify({'folderName': foldername.toString(), 'fileName': filename.toString()}), 
+                      dataType: 'json',
+                      success: function (response) {
+                    console.log(response)
+                       },
+                   error:function(error){
+                   console.log(error)
                         }
-                        return response.text();
-                      })
-                      .then(data => {
-                        console.log(data); // Print the response from the server
-                      })
-                      .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                      });
                       //pass in the file name and folder name(user email but with special characters removed)
                       //call brainBrowserload after this processing is done
                     
                     //add loading circle functionality here
-
                 });
             });
-
-        })
-        .catch(error => {
-            // Handle any errors
-            console.error('Error fetching files:', error);
-  
+          });
+        });
         })
     });
-    });
+    
 
     
   </script>
-  <!--Make OnClick of a file in the fileList load that file into the model-->
-  <script>
-    
-  </script>
-
+ 
     <!-- Brain Browser Display-->
   <div id="content-container"> 
     <div id="display" style="width:800px;height:800px;">
@@ -248,37 +232,23 @@
         fadeAnimation("drop-ex5");
 
         //dropdown menus set visibility
-        function toggleDropdown() {
-        var content = document.querySelector(".drop-content");
-        if (content.style.display === "none" || content.style.display === "") {
-          content.style.display = "block";
-          content.style.animation = "dropdown-slide 1s";
-          content.style.maxHeight = content.scrollHeight + "px";
-        } else {
-          content.style.display = "none";
-          content.style.animation = "dropdown-slide 1s reverse";
-          content.style.maxHeight = "0";
+        var dropdown = document.getElementsByClassName("dropdown-menu");
+        for(var i = 0;i<dropdown.length;i++){
+
+          dropdown[i].addEventListener("mouseover",function() {
+            var content = this.querySelector(".drop-content");
+            content.style.display = "block";
+            content.style.animation = "dropdown-slide 1s";
+            content.style.maxHeight = content.scrollHeight + "px";
+          });
+
+          dropdown[i].addEventListener("mouseout",function() {
+            var content = this.querySelector(".drop-content");
+            content.style.display = "none";
+            content.style.animation = "dropdown-slide 1s reverse";
+            content.style.maxHeight = "0";
+          });
         }
-      }
-
-        //code for hovering over dropdown; commented out bc doesn't work for mobile
-        // var dropdown = document.getElementsByClassName("dropdown-menu");
-        // for(var i = 0;i<dropdown.length;i++){
-
-        //   dropdown[i].addEventListener("mouseover",function() {
-        //     var content = this.querySelector(".drop-content");
-        //     content.style.display = "block";
-        //     content.style.animation = "dropdown-slide 1s";
-        //     content.style.maxHeight = content.scrollHeight + "px";
-        //   });
-
-        //   dropdown[i].addEventListener("mouseout",function() {
-        //     var content = this.querySelector(".drop-content");
-        //     content.style.display = "none";
-        //     content.style.animation = "dropdown-slide 1s reverse";
-        //     content.style.maxHeight = "0";
-        //   });
-        // }
     </script>
 
     <!-- Brain Browser Initalization Script -->
