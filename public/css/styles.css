@@ -18,6 +18,21 @@ body {
 
 }
 
+a{
+    color:inherit;
+    text-decoration:inherit;
+}
+
+a:visited{
+    color:inherit;
+    text-decoration:inherit;
+}
+
+a:hover{
+    color:inherit;
+    text-decoration:inherit;
+}
+
 h1{
     font-weight: bold;
     color: white;
@@ -96,6 +111,10 @@ li {
 }
 
 #left-panel button:hover{
+    background-color:#e4e4e4;
+}
+
+#right-panel button:hover{
     background-color:#e4e4e4;
 }
 
