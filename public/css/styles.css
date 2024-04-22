@@ -324,7 +324,7 @@ form input {
 
 button {
     display: block;
-    margin: 10px auto;
+    margin: auto;
     padding: 10px 20px; 
     font-family: inherit;
     font-size: 14pt;
@@ -362,4 +362,19 @@ button:active {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 20px;
+}
+
+#right-panel a button{
+    display:inline;
+    width:50%;
+    margin:0;
+    padding:auto;
+}
+#right-panel #signOut-btn{
+    text-decoration: none;
+    float:right;
+    display:inline;
+    width:50%;
+    margin:0;
+    padding:auto;
 }
