@@ -2,11 +2,11 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link rel="stylesheet" type="text/css" href="./public/css/styles.css"> 
+    
     <link type="text/css" href="brainbrowser/examples/css/ui-darkness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
     <link type="text/css" href="brainbrowser/examples/css/common.css" rel="Stylesheet" />
     <link type="text/css" href="brainbrowser/examples/css/surface-viewer-demo.css" rel="Stylesheet" />
-
+    <link rel="stylesheet" type="text/css" href="./public/css/styles.css"> 
     <!-- all the scripts -->
     <script src="brainbrowser\examples\js/jquery-1.6.4.min.js"></script>
     <script src="brainbrowser\examples\js/jquery-ui-1.8.10.custom.min.js"></script>
@@ -35,7 +35,7 @@
 
     <!-- top head/navigation bar-->
     <div id ="top-bar">
-      <h1>EEG Seizure Detection</h1>
+      <h1><a href="index.html">EEG Seizure Detection</a></h1>
     </div>
 
 
@@ -78,9 +78,9 @@
     </script>
   <div id="right-panel">
     <a href="signup.html">
-      <button>Sign Up</button>
+      <button class="hover-effect">Sign Up</button>
   </a>
-  <button id = "signOut-btn">Sign Out</button>
+  <button id = "signOut-btn" class="hover-effect">Sign Out</button>
     <div id="login">
       <div id="current-login">
         Sign in to view uploaded files:
@@ -95,10 +95,10 @@
         document.getElementById("Login-errs").style.display = "none";
         </script>
       </div>
-      <button id="login-btn">Log In</button>
+      <button id="login-btn" class="hover-effect">Log In</button>
     </div>
     <div id="filelist-header">Registered Files:
-      <button id="refresh-files" styles="float:right">Refresh</button>
+      <button id="refresh-files" styles="float:right" class="hover-effect">Refresh</button>
     </div>
     <div id="filelist">
     </div>
