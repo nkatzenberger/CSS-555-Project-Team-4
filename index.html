@@ -117,7 +117,6 @@
     document.getElementById("refresh-files").addEventListener("click", function() {
       const auth = getAuth();
       document.getElementById("filelist").innerHTML = "";
-      document.getElementById("loading").style.display = "block"; //show lading circle
       //get folder name from current user
       var foldername="DefaultUser";   //default implementation for logged out users
       onAuthStateChanged(auth, (user) => {
@@ -137,7 +136,7 @@
                 fileDiv.textContent = currentFile;
                 container.appendChild(fileDiv);
             });
-            document.getElementById("loading").style.display = "none"; // hide loading circle
+           
             /*
             Make OnClick of a file in the fileList load that file into the model
             */
@@ -150,7 +149,7 @@
                 element.addEventListener('click', function(event) {
                     // Identify which element was clicked
                     const clickedFile = event.target;
-                    
+                    document.getElementById("loading").style.display = "block"; //show lading circle
                     // load the file into the ML model
                     console.log('Clicked Element:', clickedFile);
                     const filename=clickedFile.innerHTML;   //get file name from element
@@ -173,8 +172,10 @@
                       //pass in the file name and folder name(user email but with special characters removed)
                       //call brainBrowserload after this processing is done
                     
-                    //add loading circle functionality here
                 });
+                setTimeout(()=> {
+                document.getElementById("loading").style = "display:none"; //hide lading circle
+                }, 3000);
             });
           });
         })
@@ -182,11 +183,8 @@
           console.error("Error loading files:", error);
           document.getElementById("loading").style.display = "none"; // hide loading circle on error
         });
-      })
+      });
     });
-    
-
-    
   </script>
  
     <!-- Brain Browser Display-->
