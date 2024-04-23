@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link type="text/css" href="brainbrowser/examples/css/ui-darkness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
     <link type="text/css" href="brainbrowser/examples/css/common.css" rel="Stylesheet" />
@@ -45,6 +46,7 @@
         <button id="load-ex2" class="hover-effect">Load Example</button>
         <div class="dropdown-menu">
           <button class="drop hover-effect" onclick="toggleDropdown()">Display Selection &#709;</button>
+
           <div class="drop-content">
             <button id="drop-ex1" class="hover-effect">Blue</button>
             <button id="drop-ex2" class="hover-effect">Green</button>
@@ -63,7 +65,6 @@
                 <div class="loader"></div>
               </div>
             </div>
-            <!-- Status Message -->
             <div id="uploadStatus"></div>
           </div>
           <div id="response" style="display:none"></div>
@@ -205,7 +206,6 @@
   
     <!-- animations-->
     <script>
-
       function fadeAnimation(elementID){
         document.getElementById(elementID).addEventListener("click", function() {
 
@@ -231,24 +231,38 @@
         fadeAnimation("drop-ex4");
         fadeAnimation("drop-ex5");
 
-        //dropdown menus set visibility
-        var dropdown = document.getElementsByClassName("dropdown-menu");
-        for(var i = 0;i<dropdown.length;i++){
+        // dropdown menus set visibility commented out 
+        // var dropdown = document.getElementsByClassName("dropdown-menu");
+        // for(var i = 0;i<dropdown.length;i++){
 
-          dropdown[i].addEventListener("mouseover",function() {
-            var content = this.querySelector(".drop-content");
-            content.style.display = "block";
-            content.style.animation = "dropdown-slide 1s";
-            content.style.maxHeight = content.scrollHeight + "px";
-          });
+        //   dropdown[i].addEventListener("mouseover",function() {
+        //     var content = this.querySelector(".drop-content");
+        //     content.style.display = "block";
+        //     content.style.animation = "dropdown-slide 1s";
+        //     content.style.maxHeight = content.scrollHeight + "px";
+        //   });
 
-          dropdown[i].addEventListener("mouseout",function() {
-            var content = this.querySelector(".drop-content");
-            content.style.display = "none";
-            content.style.animation = "dropdown-slide 1s reverse";
-            content.style.maxHeight = "0";
-          });
+        //   dropdown[i].addEventListener("mouseout",function() {
+        //     var content = this.querySelector(".drop-content");
+        //     content.style.display = "none";
+        //     content.style.animation = "dropdown-slide 1s reverse";
+        //     content.style.maxHeight = "0";
+        //   });
+        // }
+
+        function toggleDropdown() {
+        var content = document.querySelector(".drop-content");
+        if (content.style.display === "none" || content.style.display === "") {
+          content.style.display = "block";
+          content.style.animation = "dropdown-slide 1s";
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.display = "none";
+          content.style.animation = "dropdown-slide 1s reverse";
+          content.style.maxHeight = "0";
         }
+      }
+
     </script>
 
     <!-- Brain Browser Initalization Script -->

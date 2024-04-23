@@ -397,3 +397,33 @@ button:active {
     margin:0;
     padding:auto;
 }
+
+@media screen and (max-width: 750px) {
+
+    #left-panel, #right-panel {
+      width: 100%;
+      float: none;
+      margin: 0;
+    }
+  
+    .drop-content {
+      display: none;
+    }
+  
+    .dropdown-menu:hover .drop-content {
+      display: block;
+      animation: dropdown-slide 1s;
+      max-height: unset;
+    }
+  
+    .drop-content .hover-effect {
+      pointer-events: auto;
+    }
+  
+    footer {
+      width: 100%;
+    }
+  }
+  
+  
+  
