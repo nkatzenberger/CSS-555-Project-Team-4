@@ -116,12 +116,13 @@
     document.getElementById("refresh-files").addEventListener("click", function() {
       const auth = getAuth();
       document.getElementById("filelist").innerHTML = "";
+      document.getElementById("loading").style.display = "block"; //show lading circle
       //get folder name from current user
       var foldername="DefaultUser";   //default implementation for logged out users
       onAuthStateChanged(auth, (user) => {
-		if (user) {
-      foldername = user.email;
-    }
+      if (user) {
+        foldername = user.email;
+      }
       getFiles(foldername)
         .then(fileList => {
             // Clear the contents of the filelist div
@@ -135,7 +136,7 @@
                 fileDiv.textContent = currentFile;
                 container.appendChild(fileDiv);
             });
-        
+            document.getElementById("loading").style.display = "none"; // hide loading circle
             /*
             Make OnClick of a file in the fileList load that file into the model
             */
@@ -175,8 +176,12 @@
                 });
             });
           });
-        });
         })
+        .catch(error => {
+          console.error("Error loading files:", error);
+          document.getElementById("loading").style.display = "none"; // hide loading circle on error
+        });
+      })
     });
     
 
